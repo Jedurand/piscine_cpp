@@ -7,7 +7,7 @@
 class Zombie
 {
 	public:
-	Zombie(std::string name = "");
+	Zombie(std::string name);
 	void advert();
 	void do_type(std::string type);
 	void annouce();
@@ -28,13 +28,3 @@ class ZombieEvent
 	std::string randomize();
 };
 
-class ZombieHorde
-{
-	public:
-	ZombieHorde(int n);
-	void annouce();
-	
-	private:
-	Zombie *_lst;
-	int _n;
-};

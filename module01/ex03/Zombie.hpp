@@ -4,13 +4,16 @@
 #include <cstdlib>
 #include <string>
 
+std::string randomize();
+
 class Zombie
 {
 	public:
-	Zombie(std::string name = "");
+	Zombie(std::string name = randomize());
+	~Zombie();
 	void advert();
 	void do_type(std::string type);
-	void annouce();
+	void announce();
 
 	private:
 	std::string _type;
@@ -25,14 +28,15 @@ class ZombieEvent
 	Zombie *newZombie(std::string name);
 	void randomChum();
 	void exterminatum();
-	std::string randomize();
+	std::string randomize(std::string = "");
 };
 
 class ZombieHorde
 {
 	public:
 	ZombieHorde(int n);
-	void annouce();
+	~ZombieHorde();
+	void announce();
 	
 	private:
 	Zombie *_lst;
