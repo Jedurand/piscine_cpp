@@ -16,14 +16,13 @@ int main(int ac, char **av)
 	std::ifstream src(av[1]);
 	if (!src)
 		return (0);
-	std::ofstream dest("FILENAME.replace");
+	std::ofstream dest(std::string(av[1]) + ".replace");
 	if (!dest)
 		return (0);
 	while (std::getline(src, b))
-		content.append(b);
-	
-	std::cout << "Content: " + content;
-	
+		content.append(b + "\n");
+	if (content == "")
+		return (0);	
 	while (i < content.size())
 	{
 		i = content.find(av[2], i);
