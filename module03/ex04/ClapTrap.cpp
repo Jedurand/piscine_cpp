@@ -1,9 +1,9 @@
-#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
-FragTrap::FragTrap(std::string name)
+ClapTrap::ClapTrap(std::string name)
 {
 	std::srand(std::time(nullptr));
-	std::cout << "Constructor called\n";
+	std::cout << "ClapTrap Constructor called\n";
 	_name = name;
 	_hitPoints = 100;
 	_maxHitPoints = 100;
@@ -15,7 +15,7 @@ FragTrap::FragTrap(std::string name)
 	_damageReduction = 5;
 }
 
-FragTrap::FragTrap(const FragTrap& ori)
+ClapTrap::ClapTrap(const ClapTrap& ori)
 {
 	std::srand(std::time(nullptr));
 	_name = ori._name;
@@ -29,7 +29,7 @@ FragTrap::FragTrap(const FragTrap& ori)
 	_damageReduction = ori._damageReduction;
 }
 
-void FragTrap::operator = (const FragTrap& ori)
+void ClapTrap::operator = (const ClapTrap& ori)
 {
 	std::srand(std::time(nullptr));
 	_name = ori._name;
@@ -43,22 +43,22 @@ void FragTrap::operator = (const FragTrap& ori)
 	_damageReduction = ori._damageReduction;
 }	
 
-FragTrap::~FragTrap()
+ClapTrap::~ClapTrap()
 {
-	std::cout << "Destrutor called\n";
+	std::cout << "ClapTrap Destrutor called\n";
 }
 
-void FragTrap::rangedAttack(const std::string& target)
+void ClapTrap::rangedAttack(const std::string& target)
 {
 	std::cout << "Fr4g-TP " + _name + " attaque " + target + " a distance, causant " << _rangedDamage << " points de degats\n";
 }
 
-void FragTrap::meleeAttack(const std::string& target)
+void ClapTrap::meleeAttack(const std::string& target)
 {
 	std::cout << "Fr4g-TP " + _name + " attaque " + target + " au cac, causant " << _meleeDamage << " points de degats\n";
 }
 
-void FragTrap::takeDamage(unsigned int ammount)
+void ClapTrap::takeDamage(unsigned int ammount)
 {
 	if ((ammount - _damageReduction) <= _hitPoints)
 		_hitPoints -= (ammount - _damageReduction);
@@ -67,7 +67,7 @@ void FragTrap::takeDamage(unsigned int ammount)
 	std::cout << "Aiiiiiiiiiiiiiiiiie, ... ANALYSING ... REMAINING HITPOINTS: " << _hitPoints << std::endl;
 }
 
-void FragTrap::beRepaired(unsigned int ammount)
+void ClapTrap::beRepaired(unsigned int ammount)
 {
 	if (ammount + _hitPoints <= _maxHitPoints)
 		_hitPoints += ammount;
@@ -76,41 +76,3 @@ void FragTrap::beRepaired(unsigned int ammount)
 	std::cout << "Je me lubrifie !!! ... Hit points: " << _hitPoints << std::endl;
 }
 
-std::string FragTrap::randomizeAttack()
-{
-	std::string 	random;
-	int		seed;
-
-	seed = std::rand() % (6 - 1) + 1;
-	if (seed == 1)
-		return ("Coup de poele a frire");
-	if (seed == 2)
-		return ("Pourpaleeeeeree");
-	if (seed == 3)
-		return ("Down smash");
-	if (seed == 4)
-		return ("Piki fireeee");
-	if (seed == 5)
-		return ("Mambo number 5");
-	else
-		return ("-Wall -Wextra -Werror");
-}
-
-unsigned int FragTrap::randomizeDamage()
-{
-	int seed = std::rand() % (_meleeDamage * 2);
-	seed *= (_level * 1.1);
-	return (seed);
-}
-
-void FragTrap::vaulthunter_dot_exe(const std::string& target)
-{
-	if (_energyPoints < 25)
-	{
-		std::cout << "Je suis a plat\n";
-		return ;
-	}
-	std::cout << _name + " execute vaulthunter_dot_exe:\n";
-	std::cout << randomizeAttack() + " fait " << randomizeDamage() << " damages\n";
-	_energyPoints -= 25;
-}
