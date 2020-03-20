@@ -13,5 +13,7 @@ int main(void)
 
 	std::cout << a.toInt() << std::endl;
 	std::cout << b.toFloat() << std::endl;
+	std::cout << a.toFloat() << std::endl;
+	std::cout << b.toInt() << std::endl;
 	return (0);
 }
