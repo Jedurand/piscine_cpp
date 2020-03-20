@@ -26,6 +26,14 @@ int main(int ac, char **av)
 	std::ofstream file(path);
 	if (!(file))
 		return (1);
+	/* Protect */
+	std::string cap;
+	for (int i = 0; i < strlen(av[2]); i++)
+		cap.push_back(toupper(av[2][i]));
+	file << "#ifndef " << cap << "_HPP\n";
+	file << "#define " << cap << "_HPP\n\n";
+
+
 	file << GEN_INCLUDES << "\n";
 	file << "class " << av[2] << "\n\{\n";
 	file << "\tpublic:\n";
@@ -58,7 +66,7 @@ int main(int ac, char **av)
 			file << type << " _" << av[i] << ";\n";
 		}
 	}
-	file << "};";
+	file << "};\n\n#endif\n";
 
 	path = av[1];
 	if (path[path.size() - 1] != '/')
