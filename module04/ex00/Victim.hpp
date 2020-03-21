@@ -14,9 +14,9 @@ class Victim
 	void operator = (const Victim& victim);
 
 	std::string announce() const;
-	void getPolymorphed() const;
+	virtual void getPolymorphed() const;
 
-	private:
+	protected:
 	std::string _name;
 };
 

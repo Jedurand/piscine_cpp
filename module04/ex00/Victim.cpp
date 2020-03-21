@@ -35,5 +35,5 @@ std::ostream& operator << (std::ostream& out, const Victim& victim)
 
 void Victim::getPolymorphed() const
 {
-	
+	std::cout << _name << " was just polymorphed into a cute little sheep\n";
 }

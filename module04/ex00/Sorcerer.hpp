@@ -14,7 +14,7 @@ class Sorcerer
 	void operator = (const Sorcerer& sorcerer);
 
 	std::string announce() const;
-	void polymorph(const Victim& victim);
+	void polymorph(const Victim& victim) const;
 
 	private:
 	std::string _name;

@@ -36,7 +36,8 @@ std::ostream& operator << (std::ostream&out, const Sorcerer& sorcerer)
 	return (out << sorcerer.announce());
 }
 
-void Sorcerer::polymorph(const Victim& victim)
+void Sorcerer::polymorph(const Victim& victim) const
 {
+	std::cout << _name << " just polymorphed a victim\n";
 	victim.getPolymorphed();
 }
