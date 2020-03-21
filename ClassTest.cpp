@@ -1,21 +1,21 @@
-#include "ClassTest.hpp"
+#include "Lolbite.hpp"
 
-ClassTest::ClassTest()
+Lolbite::Lolbite()
 {
 
 }
 
-ClassTest::~ClassTest()
+Lolbite::~Lolbite()
 {
 
 }
 
-ClassTest::ClassTest(const ClassTest& classTest)
+Lolbite::Lolbite(const Lolbite& lolbite)
 {
 
 }
 
-void ClassTest::operator = (const ClassTest& classTest)
+void Lolbite::operator = (const Lolbite& lolbite)
 {
 
 }
