@@ -11,13 +11,23 @@ class Stack
 	{
 		private:
 		T	_el;
-		el	*_next;
+		El	*_next;
+		El	*_prev;
 	}
 	
 	class Iterator
 	{
 		public:
-		unsigned int	i;
+		El<T>		*_el;
+		El<T>		*_prev_el;
+
+		// overloads:
+		/*
+		<< >>
+		+ - < > == = != += -=
+		++ --
+		*/
+	}
 			
 
 	public:

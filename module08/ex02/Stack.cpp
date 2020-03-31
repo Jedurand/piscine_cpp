@@ -86,7 +86,7 @@ void Stack::pop()
 
 void Stack::print()
 {
-	bstack = _stack;
+	El *bstack = _stack;
 	
 	while (bstack)
 	{
@@ -97,5 +97,35 @@ void Stack::print()
 
 
 //void Stack::swap(const
-	
+
+bool Stack::Iterator::operator == (const Iterator& iter)
+{
+	if (_el->_el == iter->_el)
+		return true;
+	return false;
+}
+
+bool Stack::Iterator::operator != (const Iterator& iter)
+{
+	if (_el->_el != iter->_el)
+		return true;
+	return false;
+}
+
+T& Stack::Iterator::operator *()
+{
+	return (_el->_el);
+}
+
+Stack::Iterator& Stack::Iterator::operator++()
+{
+	_el = _el->_next;
+	return (_el);
+}
+
+Stack::Iterator& Stack::Iterator::operator--()
+{
+	_el = _el->_prev_el;
+	return (_el);
+}
 		
