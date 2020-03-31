@@ -33,6 +33,7 @@ void parseOp(std::list<Token>& tokens, char **av)
 	int i = 0;
 	int ret;
 	int num;
+	int flag_minus = 1;
 	char op;	
 	
 	while (av[1][i] != 0)
@@ -42,14 +43,24 @@ void parseOp(std::list<Token>& tokens, char **av)
 		else if (isdigit(av[1][i]))
 		{
 			ret = sscanf(&av[1][i], "%d", &num);
-			tokens.push_back(Token(num, 0));
+			
+			if (!tokens.empty() && tokens.back().getType() == NUM)
+			{
+				std::cout << "Parsing Error\n";
+				exit(1);
+			}	
+			tokens.push_back(Token(num * flag_minus, 0));
+			flag_minus = 1;
 			for (; isdigit(av[1][i]); i++) ;
 		}
 		else if (av[1][i] == '(' || av[1][i] == ')' || av[1][i] == '+' ||
 		av[1][i] == '-' || av[1][i] == '*' || av[1][i] == '/')
 		{	
 			ret = sscanf(&av[1][i], "%c", &op);
-			tokens.push_back(Token(static_cast<int>(op), 1));
+			if (op == '-' && (tokens.size() == 0 || tokens.back().getType() != NUM))
+				flag_minus = -1;
+			else
+				tokens.push_back(Token(static_cast<int>(op), 1));
 			i += ret;
 		}
 		else
@@ -69,7 +80,9 @@ void shuntingYard(std::list<Token>& tokens, std::list<Token>& output, std::stack
 	while (it != end)
 	{
 		if (it->getType() == NUM)
+		{
 			output.push_back(*it);
+		}
 		else if (it->getType() == OP_LOW || it->getType() == OP_HIGH)
 		{
 			if (opStack.size() > 0 && 
@@ -112,6 +125,11 @@ void shuntingYard(std::list<Token>& tokens, std::list<Token>& output, std::stack
 		opStack.pop();
 	}
 	printList(output, "Postfix");
+/*	if (nop != nnum - 1)
+	{
+		std::cout << "Parse error, not enough operators or not enough numbers\n";
+		exit(1);
+	}*/
 }	
 
 void formatOutput(Token& token, const char *operation, std::stack<int> op)
@@ -138,11 +156,11 @@ void doOp(Token& token, std::stack<int>& op)
 	b = op.top();
 	op.pop();
 
-	if (op.size() == 0)
+/*	if (op.size() == 0)
 	{
 		std::cout << "Bad formating, a number is missing\n";
 		exit(1);
-	}	
+	}	*/
 	if (token.getValue() == 42) // mult
 	{
 		op.top() = op.top() * b;
@@ -155,12 +173,18 @@ void doOp(Token& token, std::stack<int>& op)
 	}
 	else if (token.getValue() == 43) // +
 	{
-		op.top() = op.top() + b;
+		if (op.size() > 0)
+			op.top() = op.top() + b;
+		else
+			op.push(b);
 		formatOutput(token, "OP ADD", op);
 	}
 	else if (token.getValue() == 45) // -
 	{
-		op.top() = op.top() - b;
+		if (op.size() > 0)
+			op.top() = op.top() - b;
+		else
+			op.push(-b);
 		formatOutput(token, "OP SUB", op);
 	}
 }	
@@ -201,7 +225,8 @@ int main(int ac, char **av)
 
 	shuntingYard(tokens, output, opStack);
 
-	resolve(output);	
+	if (!output.empty())
+		resolve(output);	
 		
 	return (0);
 }		
