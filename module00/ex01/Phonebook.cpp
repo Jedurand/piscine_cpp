@@ -1,4 +1,4 @@
-#include "Phonebook.h"
+#include "Phonebook.hpp"
 
 Phonebook::Phonebook()
 {
@@ -99,7 +99,7 @@ std::string format_str(std::string s)
 
 int str_isdigit(std::string s)
 {
-	for (int i = 0; i < s.size(); i++)
+	for (unsigned long i = 0; i < s.size(); i++)
 		if (!std::isdigit(s[i]))
 			return (0);
 	return (1);

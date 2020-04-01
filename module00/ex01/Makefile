@@ -1,25 +1,28 @@
 NAME	=	phonebook
 
-SRCS	=	main.cpp Phonebook.cpp
+SRCS	=	Phonebook.cpp main.cpp
 
-LIBS	=	-lstdc++
+LIBS	=	
 
-CC	=	gcc
+CC	=	clang++
 
-OBJS	=	$(SRCS:.cpp=.o)
+OBJS	=	$(SRCS:.cpp)
 
 FLAGS	=	-Wall -Wextra -Werror
 
 all	:	$(NAME)
-		$(CC) $(LIBS) -o $(NAME) $(FLAGS) $(SRCS)
+		make wall
+
+NAME	:
 
 c	:
-		$(CC) $(LIBS) -o $(NAME) $(SRCS)	
+		$(CC) -o $(NAME) $(SRCS)	
+
+wall	:	
+		$(CC) -o $(NAME) $(FLAGS) $(SRCS)
 
 clean	:
-		echo "Cleaning"
-#		test -f $(OBJS) && rm $(OBJS)	
-#		if [- f "$(OBJS)"]; then rm $(OBJS) fi
+		rm $(OBJS)
 
 fclean	:	clean
 		rm $(NAME)
