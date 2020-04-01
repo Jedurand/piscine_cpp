@@ -9,5 +9,5 @@ int main()
 	z1->advert();
 	delete(z1);
 	ze.randomChum();
-	while (1);
+//	while (1);
 }

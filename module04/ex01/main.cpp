@@ -11,6 +11,11 @@ int main()
 	PlasmaRifle pr;
 	PowerFist pf;
 
+
+	PlasmaRifle pr2 = pr;
+
+	std::cout << pr2.getAPCost() << std::endl;
+
 	std::cout << pr.getAPCost() << " " << pr.getName() << std::endl;
 	std::cout << pf.getDamage() << " " << pf.getName() << std::endl;
 	pr.attack();

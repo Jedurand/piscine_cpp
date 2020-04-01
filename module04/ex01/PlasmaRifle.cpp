@@ -17,6 +17,7 @@ PlasmaRifle::PlasmaRifle(const PlasmaRifle& plasmaRifle): AWeapon(plasmaRifle)
 
 void PlasmaRifle::operator = (const PlasmaRifle& plasmaRifle)
 {
+	(void)plasmaRifle;
 	std::cout << "Plasma Rifle copied\n";
 }
 

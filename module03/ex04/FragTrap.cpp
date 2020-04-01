@@ -46,6 +46,6 @@ void FragTrap::vaulthunter_dot_exe(const std::string& target)
 		return ;
 	}
 	std::cout << _name + " execute vaulthunter_dot_exe:\n";
-	std::cout << randomizeAttack() + " fait " << randomizeDamage() << " damages\n";
+	std::cout << randomizeAttack() + " fait " << randomizeDamage() << " damages at " << target << std::endl;
 	_energyPoints -= 25;
 }

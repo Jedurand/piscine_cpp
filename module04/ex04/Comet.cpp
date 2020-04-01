@@ -26,10 +26,12 @@ std::string Comet::getName() const
 
 std::string Comet::beMined(DeepCoreMiner* dcm) const
 {
+	(void)dcm;
 	return ("Mithril");
 }
 
 std::string Comet::beMined(StripMiner* sm) const
 {
+	(void)sm;
 	return ("Tartarite");
 }

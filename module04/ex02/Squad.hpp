@@ -18,8 +18,8 @@ class Squad: public ISquad
 	public:
 	Squad();
 	~Squad();
-	Squad(const Squad& squad);
-	void operator = (const Squad& squad);
+	Squad(const ISquad& squad);
+	void operator = (const ISquad& squad);
 
 	int getCount() const;
 	ISpaceMarine* getUnit(int n) const;

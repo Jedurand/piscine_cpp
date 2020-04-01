@@ -17,6 +17,7 @@ PowerFist::PowerFist(const PowerFist& powerFist): AWeapon(powerFist)
 
 void PowerFist::operator = (const PowerFist& powerFist)
 {
+	(void)powerFist;
 	std::cout << "Power Fist copied\n";
 }
 

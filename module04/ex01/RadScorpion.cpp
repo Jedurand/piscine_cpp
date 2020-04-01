@@ -10,13 +10,14 @@ RadScorpion::~RadScorpion()
 	std::cout << "* SPROTCH *\n";
 }
 
-RadScorpion::RadScorpion(const RadScorpion& superMutant): Enemy(superMutant)
+RadScorpion::RadScorpion(const RadScorpion& radScorpion): Enemy(radScorpion)
 {
 	std::cout << "* click click click *\n";
 }
 
-void RadScorpion::operator = (const RadScorpion& superMutant)
+void RadScorpion::operator = (const RadScorpion& radScorpion)
 {
+	takeDamage(80 - radScorpion.getHp());
 	std::cout << "* click click click *\n";
 }
 

@@ -69,7 +69,6 @@ void ZombieEvent::randomChum()
 
 ZombieHorde::ZombieHorde(int n)
 {
-	int i(0);
 	_n = n;
 	
 	std::srand(std::time(nullptr));

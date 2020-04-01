@@ -38,7 +38,31 @@ int main()
 		cur->meleeAttack();
 	} 
 	
-		
+	std::cout << "\n\n-----------COnstructors test--------\n\n";
+	
+	ISquad* squadb = new Squad(*squad);
+
+	for (int i = 0; i < squadb->getCount(); i++)
+	{
+		ISpaceMarine *cur = squadb->getUnit(i);
+		cur->battleCry();
+		cur->rangedAttack();
+		cur->meleeAttack();
+	} 
+
+	ISquad *squadc;
+	
+	*squadc = *squad;
+//	*squadc = *squad;
+
+	for (int i = 0; i < squadc->getCount(); i++)
+	{
+		ISpaceMarine *cur = squadc->getUnit(i);
+		cur->battleCry();
+		cur->rangedAttack();
+		cur->meleeAttack();
+	} 
+	
 
 	delete(squad);
 

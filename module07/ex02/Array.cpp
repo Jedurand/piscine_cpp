@@ -1,5 +1,6 @@
 #include "Array.hpp"
 
+/*
 template<typename T>
 Array::Array(unsigned int n)
 {
@@ -25,3 +26,4 @@ void operator = Array::Array(const Array& array)
 }
 
 
+*/

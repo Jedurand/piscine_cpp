@@ -17,6 +17,7 @@ Peon::Peon(const Peon& peon): Victim(peon)
 
 void Peon::operator = (const Peon& peon)
 {
+	_name = peon._name;	
 	std::cout << "Zog zog\n";
 }
 

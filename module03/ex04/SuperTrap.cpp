@@ -1,6 +1,6 @@
 #include "SuperTrap.hpp"
 
-SuperTrap::SuperTrap(std::string name): ClapTrap(name), NinjaTrap(name, 1), FragTrap(name)
+SuperTrap::SuperTrap(std::string name): ClapTrap(name), FragTrap(name), NinjaTrap(name, 0)
 {
 	std::cout << "SuperTrap constructor called\n" << "HitPoints and energy:: "
 	<< _hitPoints << " " << _energyPoints << " " << _damageReduction << std::endl;

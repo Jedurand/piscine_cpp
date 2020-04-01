@@ -11,11 +11,14 @@ AssaultTerminator::~AssaultTerminator()
 }
 
 AssaultTerminator::AssaultTerminator(const AssaultTerminator& assaultTerminator)
-{	
+{
+	(void)assaultTerminator;
+	std::cout << "* Teleports from space *\n";	
 }
 
 void AssaultTerminator::operator = (const AssaultTerminator& assaultTerminator)
 {
+	(void)assaultTerminator;
 }
 
 void AssaultTerminator::battleCry() const

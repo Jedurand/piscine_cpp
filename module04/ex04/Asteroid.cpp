@@ -26,10 +26,12 @@ std::string Asteroid::getName() const
 
 std::string Asteroid::beMined(DeepCoreMiner* dcm) const
 {
+	(void)dcm;
 	return ("Dragonite");
 }
 
 std::string Asteroid::beMined(StripMiner* sm) const
 {
+	(void)sm;
 	return ("Flavium");
 }

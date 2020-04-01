@@ -11,11 +11,14 @@ TacticalMarine::~TacticalMarine()
 }
 
 TacticalMarine::TacticalMarine(const TacticalMarine& tacticalMarine)
-{	
+{
+	(void)tacticalMarine;	
+	std::cout << "Tactical marine ready for action!\n";
 }
 
 void TacticalMarine::operator = (const TacticalMarine& tacticalMarine)
 {
+	(void)tacticalMarine;
 }
 
 void TacticalMarine::battleCry() const

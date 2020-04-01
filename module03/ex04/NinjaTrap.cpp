@@ -17,6 +17,7 @@ NinjaTrap::NinjaTrap(std::string name): ClapTrap(name)
 
 NinjaTrap::NinjaTrap(std::string name, int i): ClapTrap(name)
 {
+	(void)i;
 	std::cout << "NinjaTrap Constructor called\n";
 	_name = name;
 	_energyPoints = 120;
