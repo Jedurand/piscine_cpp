@@ -1,42 +1,48 @@
 #include "Stack.hpp"
-
-Stack::Stack()
+/*
+template<typename T>
+MutantStack<T>::MutantStack()
 {
 	_stack = nullptr;
 	_size = 0;
-	_container_type = "MutantStack";
+//	_container_type = "MutantStack";
 	_size_type = "Unsigned int";
 }
 
-Stack::~Stack()
+template<typename T>
+MutantStack<T>::~MutantStack()
 {
 	T *next;
 	while (_stack)
 	{
 		next = _stack->_next;
-		delete (_stack->);
+		delete (_stack->_el);
 		_stack = next;
 	}
 }
-
-Stack::Stack(const Stack& stack)
+*/
+template<typename T>
+MutantStack<T>::MutantStack(const MutantStack& stack)
 {
 
 }
 
-void Stack::operator = (const Stack& stack)
+template<typename T>
+void MutantStack<T>::operator = (const MutantStack& stack)
 {
 
 }
 
 ///////// ACCES METHODS
-
-T* Stack::top()
+/*
+template<typename T>
+T* MutantStack<T>::top()
 {
 	return (_stack->el);
 }
 
-bool Stack::empty()
+/*template<typename T>
+bool MutantStack<T>::empty()
 {
 	if (_size == 0)
 		return (true);
@@ -44,14 +50,16 @@ bool Stack::empty()
 		return (false);
 }
 
-unsigned int Stack::size()
+template<typename T>
+unsigned int MutantStack<T>::size()
 {
 	return (_size);
 }
 
 ///////// Modification methods
 
-void Stack::push(const T& el)
+template<typename T>
+void MutantStack<T>::push(const T& el)
 {
 	El	*bstack;
 
@@ -71,10 +79,11 @@ void Stack::push(const T& el)
 	_size += 1;
 }
 
-void Stack::pop()
+template<typename T>
+void MutantStack<T>::pop()
 {
 	El	*bstack;
-	
+
 	if (!_stack)
 		return ;
 	bstack = _stack;
@@ -83,49 +92,58 @@ void Stack::pop()
 	_size -= 1;
 }
 
-
-void Stack::print()
+template<typename T>
+void MutantStack<T>::print()
 {
 	El *bstack = _stack;
-	
+
 	while (bstack)
 	{
-		std::cout << _el << std::endl;
+		std::cout << bstack->_el << std::endl;
 		bstack = bstack->next;
 	}
-}
+}*/
 
 
 //void Stack::swap(const
-
-bool Stack::Iterator::operator == (const Iterator& iter)
+/*
+template<typename T>
+bool MutantStack<T>::Iterator::operator == (const Iterator& iter)
 {
 	if (_el->_el == iter->_el)
 		return true;
 	return false;
 }
 
-bool Stack::Iterator::operator != (const Iterator& iter)
+template<typename T>
+bool MutantStack<T>::Iterator::operator != (const Iterator& iter)
 {
 	if (_el->_el != iter->_el)
 		return true;
 	return false;
 }
 
-T& Stack::Iterator::operator *()
+template<typename T>
+T& MutantStack<T>::Iterator::operator *(Iterator& it)
 {
 	return (_el->_el);
 }
 
-Stack::Iterator& Stack::Iterator::operator++()
+template<typename T>
+MutantStack<T>::Iterator& MutantStack<T>::Iterator::operator++()
 {
-	_el = _el->_next;
-	return (_el);
+	it->_el = it->_el->next;
 }
 
+template<typename T>
+void MutantStack<T>::Iterator::operator = (const Iterator& it)
+{
+	_el = it.el;
+}
+*/
+/*
 Stack::Iterator& Stack::Iterator::operator--()
 {
 	_el = _el->_prev_el;
 	return (_el);
-}
-		
+}*/

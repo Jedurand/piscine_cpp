@@ -11,10 +11,12 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& presidentialPardonForm): Form(presidentialPardonForm)
 {
+	_target = presidentialPardonForm._target;
 }
 
 void PresidentialPardonForm::operator = (const PresidentialPardonForm& presidentialPardonForm)
 {
+	_target = presidentialPardonForm._target;
 }
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const
@@ -23,4 +25,3 @@ void PresidentialPardonForm::execute(const Bureaucrat& executor) const
 		return ;
 	std::cout << _target << " has been pardonned by Zafod Beeblebrox\n";
 }
-	
