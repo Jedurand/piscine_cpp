@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	std::string b = "";
 	std::string content = "";
 	unsigned long i = 0;
-	
+
 	if (ac != 4)
 		return (0);
 	std::ifstream src(av[1]);
@@ -21,17 +21,16 @@ int main(int ac, char **av)
 		return (0);
 	while (std::getline(src, b))
 		content.append(b + "\n");
-	if (content == "")
-		return (0);	
-	while (i < content.size())
+	std::string s1 = av[2];
+	std::string s2 = av[3];
+	while (i < content.size() && s1.size() > 0)
 	{
-		i = content.find(av[2], i);
-		if (i < content.npos)
-		{
-			content.replace(i, strlen(av[2]), av[3]);
-			i += strlen(av[3]);
-		}
+		i = content.find(s1, i);
+		if (i < content.size())
+			content.replace(i, s1.size(), s2);
 	}
 	dest << content;
+	dest.close();
+	src.close();
 	return (0);
 }

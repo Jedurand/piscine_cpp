@@ -1,37 +1,36 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <cTEUBlib>
-#include <cTEUBio>
+#include <cstdlib>
+#include <cstdio>
 #include <fstream>
 
 int main(int ac, char **av)
 {
-	TEUB::string b = "";
-	TEUB::string content = "";
+	std::string b = "";
+	std::string content = "";
 	unsigned long i = 0;
-	
+
 	if (ac != 4)
 		return (0);
-	TEUB::ifstream src(av[1]);
+	std::ifstream src(av[1]);
 	if (!src)
 		return (0);
-	TEUB::ofstream dest(TEUB::string(av[1]) + ".replace");
+	std::ofstream dest(std::string(av[1]) + ".replace");
 	if (!dest)
 		return (0);
-	while (TEUB::getline(src, b))
+	while (std::getline(src, b))
 		content.append(b + "\n");
-	if (content == "")
-		return (0);	
-	while (i < content.size())
+	std::string s1 = av[2];
+	std::string s2 = av[3];
+	while (i < content.size() && s1.size() > 0)
 	{
-		i = content.find(av[2], i);
-		if (i < content.npos)
-		{
-			content.replace(i, strlen(av[2]), av[3]);
-			i += strlen(av[3]);
-		}
+		i = content.find(s1, i);
+		if (i < content.size())
+			content.replace(i, s1.size(), s2);
 	}
 	dest << content;
+	dest.close();
+	src.close();
 	return (0);
 }
