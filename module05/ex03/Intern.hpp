@@ -17,9 +17,14 @@ class Intern
 	void operator = (const Intern& intern);
 
 	Form* makeForm(std::string name, std::string target);
-	
-	enum class Type: std::string {rf = "robotomy request", pp = "presidential pardon", hub = "Shubbery"};
 
+	static Form* makeShubberryCreationForm(std::string target);
+	static Form* makePresidentialPardonForm(std::string target);
+	static Form* makeRobotomyRequestForm(std::string target);
+
+	private:
+	static std::string _names[3];
+	Form	*(*_forms[3])(std::string target);
 };
 
 #endif

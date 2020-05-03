@@ -20,7 +20,7 @@ MutantStack<T>::~MutantStack()
 		_stack = next;
 	}
 }
-*/
+
 template<typename T>
 MutantStack<T>::MutantStack(const MutantStack& stack)
 {
@@ -34,14 +34,14 @@ void MutantStack<T>::operator = (const MutantStack& stack)
 }
 
 ///////// ACCES METHODS
-/*
+
 template<typename T>
 T* MutantStack<T>::top()
 {
 	return (_stack->el);
 }
 
-/*template<typename T>
+template<typename T>
 bool MutantStack<T>::empty()
 {
 	if (_size == 0)
@@ -102,11 +102,11 @@ void MutantStack<T>::print()
 		std::cout << bstack->_el << std::endl;
 		bstack = bstack->next;
 	}
-}*/
+}
 
 
 //void Stack::swap(const
-/*
+
 template<typename T>
 bool MutantStack<T>::Iterator::operator == (const Iterator& iter)
 {
@@ -140,8 +140,7 @@ void MutantStack<T>::Iterator::operator = (const Iterator& it)
 {
 	_el = it.el;
 }
-*/
-/*
+
 Stack::Iterator& Stack::Iterator::operator--()
 {
 	_el = _el->_prev_el;

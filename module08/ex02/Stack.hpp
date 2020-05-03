@@ -24,6 +24,25 @@ class MutantStack
 
 
 		// overloads:
+		Iterator()
+		{
+			_el = nullptr;
+		}
+
+		Iterator(const Iterator& it)
+		{
+			_el = it._el;
+		};
+
+		Iterator(El* el)
+		{
+			_el = el;
+		};
+
+		void operator = (const Iterator& it)
+		{
+			_el = it._el;
+		};
 
 		T& operator * ()
 		{
@@ -80,8 +99,42 @@ class MutantStack
 			_stack = next;
 		}
 	};
-	MutantStack(const MutantStack& stack);
-	void operator = (const MutantStack& stack);
+	MutantStack(const MutantStack& stack)
+	{
+		El *bstack;
+		El *b;
+
+		_size = stack._size;
+		_size_type = "Unsigned int";
+		bstack = stack._stack;
+		while (bstack)
+		{
+			b = new El;
+			b->_el =
+			// Ajouter dans le desorde;
+
+		}
+
+	};
+	void operator = (const MutantStack& stack)
+	{
+		El *prev = _stack;
+		El *bstack;
+
+		while (_stack)
+		{
+			prev = _stack;
+			_stack = _stack->next;
+			delete (prev);
+		}
+		_stack = nullptr;
+		bstack = stack._stack;
+		while (bstack)
+		{
+				push(bstack->_el);
+				bstack = bstack->next;
+		}
+	};
 
 	void operator = (const T& t);
 
@@ -163,7 +216,6 @@ class MutantStack
 	unsigned int	_size;
 
 //	std::string _container_type;
-	std::string _value_type;
 	std::string _size_type;
 
 

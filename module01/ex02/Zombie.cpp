@@ -16,7 +16,7 @@ void Zombie::do_type(std::string type)
 	_type = type;
 }
 
-void Zombie::annouce()
+void Zombie::announce()
 {
 	std::cout << "I am " + _name + " of type " + _type + "\n";
 }
@@ -36,7 +36,7 @@ Zombie *ZombieEvent::newZombie(std::string name)
 {
 	Zombie *new_zombie = new Zombie(name);
 	return (new_zombie);
-}	
+}
 
 std::string ZombieEvent::randomize()
 {
@@ -56,8 +56,7 @@ std::string ZombieEvent::randomize()
 }
 
 void ZombieEvent::randomChum()
-{	
+{
 	Zombie random(randomize());
-	random.annouce();	
+	random.announce();
 }
-

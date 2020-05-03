@@ -4,6 +4,7 @@ int main()
 {
 	MutantStack<int> stack;
 
+
 	std::cout << stack.size() << " " << stack.empty() << std::endl;
 
 	stack.push(1);
@@ -15,6 +16,10 @@ int main()
 	std::cout << stack.top() << std::endl;
 	stack.print();
 
+	MutantStack<int> stack_cpy(stack);
+	stack_cpy.print();
+
+
 	MutantStack<int>::Iterator it;
 	it = stack.begin();
 	std::cout << *it << std::endl;
@@ -23,8 +28,8 @@ int main()
 	it++;
 	std::cout << *it << std::endl;
 
-	MutantStack<int>::Iterator it2;
-	it2 = stack.begin();
+	MutantStack<int>::Iterator it2 = stack.begin();
+	//it2 = stack.begin();
 	MutantStack<int>::Iterator it_end;
 	it_end = stack.end();
 
@@ -35,6 +40,7 @@ int main()
 		std::cout << "yeah: " << *it2;
 		it2++;
 	}
+	stack.pop();
 	std::cout << std::endl;
 
 }

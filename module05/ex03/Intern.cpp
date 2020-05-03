@@ -1,7 +1,16 @@
 #include "Intern.hpp"
 
+std::string Intern::_names[3] = {
+	"presidential pardon",
+	"robotomy request",
+	"shuberry creation"
+};
+
 Intern::Intern()
 {
+	_forms[0] = &Intern::makePresidentialPardonForm;
+	_forms[1] = &Intern::makeRobotomyRequestForm;
+	_forms[2] = &Intern::makeShubberryCreationForm;
 }
 
 Intern::~Intern()
@@ -16,24 +25,29 @@ void Intern::operator = (const Intern& intern)
 {
 }
 
-static int hachage(std::string name)
-{
-	int res;
-	for (int i = 0; i < name + 
-
 Form* Intern::makeForm(std::string name, std::string target)
 {
-	std::cout << name << " " << hachage(name) << std::endl;
-	switch((int)name[0])
+	for (int i = 0; i < 3; i++)
 	{
-		case 0:
-			return (new RobotomyRequestForm(target)); break ;
-		case  1:
-			return (new PresidentialPardonForm(target)); break ;
-		case 2:
-			return (new ShubberyCreationForm(target)); break;
-		default:
-			return (nullptr);
-			break;
+		//std::cout << _names[i] << std::endl;
+		if (name == _names[i])
+			return (_forms[i](target));
 	}
+	std::cout << "Form not found\n";
+	return (nullptr);
+}
+
+Form* Intern::makeShubberryCreationForm(std::string target)
+{
+	return (new ShubberyCreationForm(target));
+}
+
+Form* Intern::makePresidentialPardonForm(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+Form* Intern::makeRobotomyRequestForm(std::string target)
+{
+	return (new RobotomyRequestForm(target));
 }

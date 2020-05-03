@@ -32,8 +32,8 @@ class ZombieHorde
 {
 	public:
 	ZombieHorde(int n);
-	void annouce();
-	
+	void announce();
+
 	private:
 	Zombie *_lst;
 	int _n;

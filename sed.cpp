@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	std::string b = "";
 	std::string content = "";
 	int i(0);
-	
+
 	if (ac != 4)
 		return (0);
 	std::ifstream src(av[1]);
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	while (std::getline(src, b))
 		content.append(b + "\n");
 	if (content == "")
-		return (0);	
+		return (0);
 	std::ofstream dest(av[1]);
 	if (!dest)
 		return (0);
@@ -32,7 +32,7 @@ int main(int ac, char **av)
 			i += strlen(av[3]);
 		}
 	}
-	std::cout << content << std::endl;
+	//std::cout << content << std::endl;
 	dest << content;
 	return (0);
 }
