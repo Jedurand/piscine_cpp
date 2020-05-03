@@ -19,10 +19,16 @@ Intern::~Intern()
 
 Intern::Intern(const Intern& intern)
 {
+	_forms[0] = intern._forms[0];
+	_forms[1] = intern._forms[1];
+	_forms[2] = intern._forms[2];
 }
 
 void Intern::operator = (const Intern& intern)
 {
+	_forms[0] = intern._forms[0];
+	_forms[1] = intern._forms[1];
+	_forms[2] = intern._forms[2];
 }
 
 Form* Intern::makeForm(std::string name, std::string target)

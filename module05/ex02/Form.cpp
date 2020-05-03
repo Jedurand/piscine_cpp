@@ -54,7 +54,7 @@ Form::GradeTooHighException::~GradeTooHighException() throw()
 const char* Form::GradeTooHighException::what() const throw()
 {
 	return (_error.c_str());
-}	
+}
 
 
 const std::string Form::GradeTooLowException::_error = "Exception: Grade too low";
@@ -68,7 +68,7 @@ Form::GradeTooLowException::~GradeTooLowException() throw()
 const char* Form::GradeTooLowException::what() const throw()
 {
 	return (_error.c_str());
-}	
+}
 
 
 Form::SignedException::SignedException(std::string error) throw()
@@ -82,7 +82,7 @@ Form::SignedException::~SignedException() throw()
 const char* Form::SignedException::what() const throw()
 {
 	return (_error.c_str());
-}	
+}
 
 
 /////////////////////
@@ -133,7 +133,7 @@ bool Form::check(const Bureaucrat& executor) const
 	{
 		if (executor.getGrade() > _grade_toExe)
 			throw(GradeTooLowException());
-		
+
 		if (!isSigned())
 			throw(SignedException("Exception: Form unsigned"));
 		std::cout << executor.getName() << " executed form: " << _name << std::endl;
@@ -151,7 +151,7 @@ bool Form::check(const Bureaucrat& executor) const
 
 std::ostream& operator << (std::ostream& out, Form& form)
 {
-	out << form.getName() << " form grade to sign: " << form.getGradeToSign() 
+	out << form.getName() << " form grade to sign: " << form.getGradeToSign()
 	<< " grade to exe: " << form.getGradeToExe() << std::endl;
 	return (out);
 }

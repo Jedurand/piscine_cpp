@@ -66,12 +66,14 @@ class MutantStack
 				return true;
 			return false;
 		};
+
 		bool operator != (const Iterator& iter)
 		{
 			if (_el != iter._el)
 				return true;
 			return false;
 		};
+
 		void operator = (El* el)
 		{
 			_el = el;
@@ -89,6 +91,7 @@ class MutantStack
 	//	_container_type = "MutantStack";
 		_size_type = "Unsigned int";
 	};
+
 	~MutantStack()
 	{
 		El *next;
@@ -99,6 +102,7 @@ class MutantStack
 			_stack = next;
 		}
 	};
+
 	MutantStack(const MutantStack& stack)
 	{
 		El *bstack;
@@ -116,6 +120,7 @@ class MutantStack
 		}
 
 	};
+
 	void operator = (const MutantStack& stack)
 	{
 		El *prev = _stack;
@@ -173,6 +178,7 @@ class MutantStack
 		}
 		_size += 1;
 	};
+
 	void		pop()
 	{
 		El	*bstack;
@@ -184,7 +190,6 @@ class MutantStack
 		delete (bstack);
 		_size -= 1;
 	};
-	void		swap(const T& b) {};
 
 	void		print()
 	{

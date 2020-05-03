@@ -72,6 +72,12 @@ int main()
 	Form* robotomy = intern.makeForm("robotomy request", "bender");
 	Form*  pardon = intern.makeForm("presidential pardon", "gratos");
 
+	Intern intern2(intern);
+	Intern intern3 = intern;
+
+	Form* pardon2 = intern3.makeForm("presidential pardon", "henrichard le cirminel");
+	Form* pardon3 = intern2.makeForm("presidential pardon", "lolloooo");
+
 	admin->executeForm(*shuberry);
 	admin->signForm(*shuberry);
 	admin->executeForm(*shuberry);
@@ -83,7 +89,12 @@ int main()
 	lol->promote();
 
 	admin->signForm(*pardon);
+	admin->signForm(*pardon2);
+	admin->signForm(*pardon3);
 	admin->executeForm(*pardon);
+	admin->executeForm(*pardon2);
+	admin->executeForm(*pardon3);
+
 
 
 	std::cout << "\n\n--------Plan social--------\n\n";
@@ -97,4 +108,6 @@ int main()
 	delete shuberry;
 	delete robotomy;
 	delete pardon;
+	delete pardon2;
+	delete pardon3;
 }
