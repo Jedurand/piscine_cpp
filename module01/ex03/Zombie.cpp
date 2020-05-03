@@ -8,8 +8,6 @@ Zombie::Zombie(std::string name)
 
 Zombie::~Zombie()
 {
-/*	delete(_name);
-	delete(_type);*/
 }
 
 std::string randomize()
@@ -58,19 +56,19 @@ Zombie *ZombieEvent::newZombie(std::string name)
 {
 	Zombie *new_zombie = new Zombie(name);
 	return (new_zombie);
-}	
+}
 
 void ZombieEvent::randomChum()
 {
-	std::srand(std::time(nullptr));	
+	std::srand(std::time(nullptr));
 	Zombie random;
-	random.announce();	
+	random.announce();
 }
 
 ZombieHorde::ZombieHorde(int n)
 {
 	_n = n;
-	
+
 	std::srand(std::time(nullptr));
 	_lst = new Zombie[n];
 }
@@ -83,14 +81,10 @@ ZombieHorde::~ZombieHorde()
 void ZombieHorde::announce()
 {
 	int i(0);
-	
+
 	while (i < _n)
 	{
 		_lst[i].announce();
 		i++;
 	}
 }
-
-
-
-		

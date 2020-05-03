@@ -3,7 +3,7 @@
 Zombie::Zombie(std::string name)
 {
 	_name = name;
-	_type = "None";
+	_type = "Generic boring Zombie";
 }
 
 void Zombie::advert()
@@ -23,12 +23,11 @@ void Zombie::announce()
 
 ZombieEvent::ZombieEvent()
 {
+	std::srand(std::time(nullptr));
 }
 
 void ZombieEvent::setZombieType(Zombie *zombie, std::string type)
 {
-	if (type == "")
-		std::getline(std::cin, type);
 	zombie->do_type(type);
 }
 
@@ -40,7 +39,6 @@ Zombie *ZombieEvent::newZombie(std::string name)
 
 std::string ZombieEvent::randomize()
 {
-	std::srand(std::time(nullptr));
 	int size(std::rand() % (10 - 1) + 1);
 	int i(0);
 	char c;

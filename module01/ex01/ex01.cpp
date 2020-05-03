@@ -20,5 +20,5 @@ int main()
 	memory_leak();
 	memory_leak2();
 	memory_leak2("Serio?");
-	while (1);
+//	while (1);
 }	
