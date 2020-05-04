@@ -2,7 +2,7 @@ NAME	=	megaphone
 
 SRCS	=	megaphone.cpp
 
-LIBS	=	
+LIBS	=
 
 CC	=	clang++
 
@@ -10,22 +10,23 @@ OBJS	=	$(SRCS:.cpp)
 
 FLAGS	=	-Wall -Wextra -Werror
 
+RM		=	rm -rf
+
 all	:	$(NAME)
 		make wall
 
 NAME	:
 
 c	:
-		$(CC) -o $(NAME) $(SRCS)	
+		$(CC) -o $(NAME) $(SRCS)
 
-wall	:	
+wall	:
 		$(CC) -o $(NAME) $(FLAGS) $(SRCS)
 
 clean	:
-		rm $(OBJS)
 
 fclean	:	clean
-		rm $(NAME)
+		$(RM) $(NAME)
 
 re	:	fclean all
 

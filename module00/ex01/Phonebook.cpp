@@ -20,7 +20,7 @@ void Phonebook::add()
 	{
 		std::cout << "Max contact value: 8\nWhich contact do you want to earse?\n" << std::endl;
 		std::getline(std::cin, choice);
-		if (str_isdigit(choice))
+		if (choice.size() > 0 && str_isdigit(choice))
 		{
 			choice_i = std::stoi(choice);
 			if (choice_i > nb_contact || choice_i < 0)
@@ -46,7 +46,7 @@ Contact::Contact()
 	favorite_meal = "";
 	underwear_color = "";
 	darkest_secret = "";
-}	
+}
 
 void Contact::edit()
 {
@@ -95,7 +95,7 @@ std::string format_str(std::string s)
 	else if (s.size() == 10)
 		return (s.substr(0, 10) + "|");
 	return (s.substr(0, 9) + ".|");
-}	
+}
 
 int str_isdigit(std::string s)
 {
@@ -128,7 +128,7 @@ void Phonebook::search()
 	}
 	std::cout << "Choose index\n";
 	std::getline(std::cin, choice);
-	if (str_isdigit(choice))
+	if (choice.size() > 0 && str_isdigit(choice))
 	{
 		choice_i = std::stoi(choice);
 		if (choice_i > nb_contact - 1 || choice_i < 0)
@@ -137,6 +137,5 @@ void Phonebook::search()
 			list[choice_i].print();
 	}
 	else
-		std::cout << "Index invalid, must be a number in range[0, nb_contact]\nABORTING\n";	
+		std::cout << "Index invalid, must be a number in range[0, nb_contact]\nABORTING\n";
 }
-	
