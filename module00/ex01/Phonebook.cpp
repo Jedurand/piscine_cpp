@@ -33,7 +33,7 @@ void Phonebook::add()
 	}
 }
 
-Contact::Contact()
+Phonebook::Contact::Contact()
 {
 	first_name = "";
 	last_name = "";
@@ -48,7 +48,7 @@ Contact::Contact()
 	darkest_secret = "";
 }
 
-void Contact::edit()
+void Phonebook::Contact::edit()
 {
 	std::cout << "ADDING NEW CONTACT" << std::endl;
 	std::getline(std::cin, first_name);
@@ -65,7 +65,7 @@ void Contact::edit()
 	std::cout << "NEW CONTACT SUCCESSFULLY ADDED\n";
 }
 
-void Contact::print()
+void Phonebook::Contact::print()
 {
 	std::cout << first_name << std::endl;
 	std::cout << last_name << std::endl;
@@ -116,9 +116,9 @@ void Phonebook::search()
 		//std::cout << i;
 		//std::cout << "         |";
 		std::cout << format_str(std::to_string(i));
-		std::cout << format_str(list[i].first_name);
-		std::cout << format_str(list[i].last_name);
-		std::cout << format_str(list[i].login) << std::endl;
+		std::cout << format_str(list[i].get_first_name());
+		std::cout << format_str(list[i].get_last_name());
+		std::cout << format_str(list[i].get_nickname()) << std::endl;
 		i++;
 	}
 	if (i == 0)
@@ -138,4 +138,21 @@ void Phonebook::search()
 	}
 	else
 		std::cout << "Index invalid, must be a number in range[0, nb_contact]\nABORTING\n";
+}
+
+// getters
+
+std::string& Phonebook::Contact::get_first_name()
+{
+	return (first_name);
+}
+
+std::string& Phonebook::Contact::get_last_name()
+{
+	return (last_name);
+}
+
+std::string& Phonebook::Contact::get_nickname()
+{
+	return (nickname);
 }
