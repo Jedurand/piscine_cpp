@@ -9,7 +9,7 @@ void print_stuff(T& a, Fixed fixed)
 int main(void)
 {
 	int a = 0; int b = 12; int c = 12345; int d = -98765;
-	float f1 = 1.0; float f2 = 1.125; float f3 = 12.12; float f4 = 0.01;
+	float f1 = 0.0; float f2 = 1.125; float f3 = 12.12; float f4 = 0.01;
 	float f5 = -1.012; float f6 = 0.5;
 
 	Fixed ff7(1.32f);
@@ -118,6 +118,10 @@ int main(void)
 	std::cout << zero << std::endl;
 	std::cout << ++zero << std::endl;
 	std::cout << zero++ << std::endl;
+	std::cout << zero << std::endl;
+	std::cout << zero << std::endl;
+	std::cout << --zero << std::endl;
+	std::cout << zero-- << std::endl;
 	std::cout << zero << std::endl;
 
 	return (0);

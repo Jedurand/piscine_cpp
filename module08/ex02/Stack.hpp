@@ -48,16 +48,19 @@ class MutantStack
 		{
 			return (_el->_el);
 		};
-		Iterator& operator ++ ()
+		Iterator operator ++ ()
 		{
 			_el = _el->_next;
 			return (*this);
 		};
 
-		Iterator& operator ++ (int)
+		Iterator operator ++ (int)
 		{
+			Iterator b;
+
+			b._el = _el;
 			_el = _el->_next;
-			return (*this);
+			return (b);
 		};
 
 		bool operator == (const Iterator& iter)
@@ -107,16 +110,18 @@ class MutantStack
 	{
 		El *bstack;
 		El *b;
+		Iterator it;
 
 		_size = stack._size;
 		_size_type = "Unsigned int";
 		bstack = stack._stack;
-		while (bstack)
+		it = stack.begin();
+		while (*it)
 		{
 			b = new El;
-			b->_el =
+			b->_el = *it;
+			it++;
 			// Ajouter dans le desorde;
-
 		}
 
 	};

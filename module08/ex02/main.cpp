@@ -16,17 +16,17 @@ int main()
 	std::cout << stack.top() << std::endl;
 	stack.print();
 
-	MutantStack<int> stack_cpy(stack);
-	stack_cpy.print();
+	//MutantStack<int> stack_cpy(stack);
+	//stack_cpy.print();
 
 
 	MutantStack<int>::Iterator it;
 	it = stack.begin();
-	std::cout << *it << std::endl;
-	++it;
-	std::cout << *it << std::endl;
-	it++;
-	std::cout << *it << std::endl;
+	std::cout << "*it " << *it << std::endl;
+	std::cout << "++it " << *(++it) << std::endl;
+	std::cout << "*it " << *it << std::endl;
+	std::cout << "it++ " << *(it++) << std::endl;
+	std::cout << "*it " << *it << std::endl;
 
 	MutantStack<int>::Iterator it2 = stack.begin();
 	//it2 = stack.begin();
@@ -42,5 +42,4 @@ int main()
 	}
 	stack.pop();
 	std::cout << std::endl;
-
 }
