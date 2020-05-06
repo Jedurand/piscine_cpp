@@ -31,7 +31,7 @@ void Fixed::setRawBits(int const raw)
 
 // Other constructors
 Fixed::Fixed(const int n)
-{	
+{
 	setRawBits(n << 8);
 }
 
@@ -40,25 +40,36 @@ Fixed::Fixed(const float f)
 	// i write the dec part into a stream to get the exast length, to_string gives bad results;
 	unsigned char raw[sizeof(int)];
 	int integ = (int)f;
-	int dec_i;
 	std::stringstream ost;
-	float dec = f - integ;
-	
-	ost << dec;
-	std::string b = ost.str();
-	
-	if (dec >= 0)
-		b = b.substr(2);
+	float dec;
+
+	int raw2 = 0;
+	raw[0] = 0;
+
+	ost << f;
+	std::string fs = ost.str();
+
+	if (fs.find('.') < fs.size())
+	{
+		fs = "0" + fs.substr(fs.find('.'));
+		dec = std::stof(fs);
+	}
 	else
-		b = b.substr(3);
-	dec_i = std::stoi(b);
-	
-	raw[0] = (unsigned char)dec_i; // not sure
+		dec = 0.0;
+
+	for (int i = 7; i >= 0; i--)
+	{
+		dec *= 2;
+		if (dec >= 1)
+		{
+			raw[0] += pow(2, i);
+			dec = dec - 1;
+		}
+	}
 
 	memcpy(&raw[1], &integ, 3);
-	int raw2;
 
-	memcpy(&raw2, raw, sizeof(int)); 
+	memcpy(&raw2, raw, sizeof(int));
 	setRawBits(raw2);
 }
 
@@ -74,37 +85,72 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	float f;
-	float dec;
-	int n = _n;
-	unsigned char rawc[sizeof(float)];
-	std::string b;
+	unsigned char raw[sizeof(int)];
+	int raw_i = getRawBits();
 
-	memcpy(rawc, &n, sizeof(float));
-	
-	b = std::to_string((int)(rawc[0]));
-	int size = -b.size();
-	dec = ((int)rawc[0] * std::pow(10, size));
+	std::stringstream ost;
 
-	f += (_n >> 8);
-	if (f >= 0)
-		f += dec;
+	memcpy(raw, &raw_i, sizeof(int));
+
+	std::string s = "";
+	s.append(std::to_string(raw_i >> 8));
+
+	float dec = 0;
+	int j = 7;
+	for (int i = 1; i <= 8; i++)
+	{
+		if (raw[0] >= pow(2, j))
+		{
+			dec += pow(2, -i);
+			raw[0] -= pow(2, j);
+		}
+		j--;
+	}
+
+	ost << dec;
+	std::string fs = ost.str();
+
+	if (fs.find('.') < fs.size())
+		fs = fs.substr(fs.find('.'));
 	else
-		f -= dec;	
-	return (f);
+		fs = ".0";
+
+	s = s + fs;
+	return (std::stof(s));
 }
 
 std::ostream& operator << (std::ostream &out, Fixed& b)
 {
-	unsigned char raw[sizeof(int)];
+	/*unsigned char raw[sizeof(int)];
 	int raw_i = b.getRawBits();
+	std::stringstream ost;
 
 	memcpy(raw, &raw_i, sizeof(int));
-	
+
 	std::string s = "";
 	s.append(std::to_string(raw_i >> 8));
-	s.push_back('.');
-	s.append(std::to_string((int)raw[0]));
-	return (out << s);
-}
 
+	float dec = 0;
+	int j = 7;
+	for (int i = 1; i <= 8; i++)
+	{
+		if (raw[0] >= pow(2, j))
+		{
+			dec += pow(2, -i);
+			raw[0] -= pow(2, j);
+		}
+		j--;
+	}
+
+	ost << dec;
+	std::string fs = ost.str();
+
+	if (fs.find('.') < fs.size())
+		fs = fs.substr(fs.find('.'));
+	else
+		fs = ".0";
+
+	s = s += fs;
+	return (out << s); */
+	return (out << b.toFloat());
+}

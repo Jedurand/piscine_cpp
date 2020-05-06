@@ -17,7 +17,7 @@ class Fixed
 	Fixed(const Fixed& ori);
 	~Fixed();
 
-	int getRawBits(void) const; 
+	int getRawBits(void) const;
 	void setRawBits(int const raw);
 };
 

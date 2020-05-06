@@ -6,12 +6,12 @@
 #include <bitset>
 #include <cmath>
 #include <cstdio>
-#include <sstream> 
+#include <sstream>
 
 class Fixed
 {
 	private:
-	int 			_n;
+	int 				_n;
 	static const int	_fixed_point = 8;
 
 	public:
@@ -20,10 +20,10 @@ class Fixed
 	Fixed(const Fixed& ori);
 	Fixed(const int n);
 	Fixed(const float f);
-	
+
 	~Fixed();
 
-	int getRawBits(void) const; 
+	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	int getFixedPoint();
 

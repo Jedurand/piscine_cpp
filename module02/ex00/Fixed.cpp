@@ -21,8 +21,6 @@ void Fixed::operator = (const Fixed& ori)
 {
 	std::cout << "Assignation member function called\n";
 	this->_n = ori.getRawBits();
-//	Fixed fixed(ori);
-//	return (*this);
 }
 
 int Fixed::getRawBits(void) const
@@ -36,6 +34,3 @@ void Fixed::setRawBits(int const raw)
 	std::cout << "setRawBits member function called\n";
 	_n = raw;
 }
-
-
-

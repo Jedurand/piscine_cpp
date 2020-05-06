@@ -6,7 +6,7 @@
 #include <bitset>
 #include <cmath>
 #include <cstdio>
-#include <sstream> 
+#include <sstream>
 
 class Fixed
 {
@@ -20,29 +20,47 @@ class Fixed
 	Fixed(const Fixed& ori);
 	Fixed(const int n);
 	Fixed(const float f);
-	
+
 	~Fixed();
 
-	int getRawBits(void) const; 
+	int getRawBits(void) const;
 	void setRawBits(int const raw);
 	int getFixedPoint();
 
 	float toFloat(void) const;
 	int toInt(void) const;
 
+	Fixed operator ++ (void);
+	Fixed operator -- (void);
+	Fixed operator ++ (int);
+	Fixed operator -- (int);
+
+	bool operator == (const Fixed& b);
+	bool operator != (const Fixed& b);
+	bool operator < (const Fixed& b);
+	bool operator <= (const Fixed& b);
+	bool operator > (const Fixed& b);
+	bool operator >= (const Fixed& b);
+
+	Fixed operator + (const Fixed& b);
+	Fixed operator - (const Fixed& b);
+	Fixed operator * (const Fixed& b);
+	Fixed operator / (const Fixed& b);
+
 };
 
-std::ostream& operator << (std::ostream &out, Fixed& b);
-bool operator == (const Fixed& a, const Fixed& b);
-bool operator != (const Fixed& a, const Fixed& b);
-bool operator < (const Fixed& a, const Fixed& b);
-bool operator <= (const Fixed& a, const Fixed& b);
-bool operator > (const Fixed& a, const Fixed& b);
-bool operator >= (const Fixed& a, const Fixed& b);
+//std::ostream& operator << (std::ostream &out, Fixed& b);
+std::ostream& operator << (std::ostream &out, Fixed b);
 
-Fixed operator + (const Fixed& a, const Fixed& b); 
-float operator - (const Fixed& a, const Fixed& b); 
-Fixed operator * (const Fixed& a, const Fixed& b); 
-float operator / (const Fixed& a, const Fixed& b); 
+
+
+/*
+float& max(Fixed& a, Fixed& b);
+float& min(Fixed& a, Fixed& b);
+*/
+Fixed& max(Fixed& a, Fixed& b);
+Fixed& min(Fixed& a, Fixed& b);
+
+
 
 #endif
