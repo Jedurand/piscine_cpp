@@ -122,6 +122,7 @@ class MutantStack
 			b->_el = *it;
 			it++;
 			// Ajouter dans le desorde;
+			
 		}
 
 	};
