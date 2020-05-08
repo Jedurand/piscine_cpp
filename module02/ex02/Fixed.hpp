@@ -47,17 +47,14 @@ class Fixed
 	Fixed operator * (const Fixed& b);
 	Fixed operator / (const Fixed& b);
 
+	static Fixed& max(Fixed& a, Fixed& b);
+	static Fixed& min(Fixed& a, Fixed& b);
+
 };
 
 //std::ostream& operator << (std::ostream &out, Fixed& b);
 std::ostream& operator << (std::ostream &out, Fixed b);
 
-
-
-/*
-float& max(Fixed& a, Fixed& b);
-float& min(Fixed& a, Fixed& b);
-*/
 Fixed& max(Fixed& a, Fixed& b);
 Fixed& min(Fixed& a, Fixed& b);
 

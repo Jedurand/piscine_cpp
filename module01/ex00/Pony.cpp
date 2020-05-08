@@ -32,7 +32,7 @@ std::string Pony::rand_race()
 
 Pony::Pony()
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	std::cout << "Enter pony name: ";
 	std::getline(std::cin, _name);
 	_velocity = std::rand() % 100;

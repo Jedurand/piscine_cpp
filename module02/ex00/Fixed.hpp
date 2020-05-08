@@ -8,7 +8,7 @@
 class Fixed
 {
 	private:
-	int 			_n;
+	int 				_n;
 	static const int	nbits = 8;
 
 	public:

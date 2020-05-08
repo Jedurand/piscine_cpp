@@ -112,6 +112,11 @@ int main(void)
 	std::cout << "Min between " << ff2 << " and " << ff3 << " = ";
 	std::cout << min(ff2, ff3) << std::endl;
 
+	std::cout << "Max between " << ff2 << " and " << ff3 << " = ";
+	std::cout << Fixed::max(ff2, ff3) << std::endl;
+	std::cout << "Min between " << ff2 << " and " << ff3 << " = ";
+	std::cout << Fixed::min(ff2, ff3) << std::endl;
+
 	std::cout << "\n\n -- ++/-- -- \n\n";
 
 	Fixed zero;
@@ -123,6 +128,10 @@ int main(void)
 	std::cout << --zero << std::endl;
 	std::cout << zero-- << std::endl;
 	std::cout << zero << std::endl;
+
+	std::cout << Fixed(-1) << " " <<
+	Fixed(-1.0f) << " " <<
+	Fixed(-0.5f) << " " << Fixed(-3.01f) << std::endl;
 
 	return (0);
 }

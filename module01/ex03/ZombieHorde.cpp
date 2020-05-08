@@ -4,7 +4,7 @@ ZombieHorde::ZombieHorde(int n)
 {
 	_n = n;
 
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_lst = new Zombie[n];
 }
 

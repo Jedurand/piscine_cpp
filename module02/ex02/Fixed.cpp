@@ -56,7 +56,8 @@ Fixed::Fixed(const float f)
 	}
 	else
 		dec = 0.0;
-
+	std::cout << "here " << f << " " << integ << std::endl;
+	std::cout << dec << std::endl;
 	for (int i = 7; i >= 0; i--)
 	{
 		dec *= 2;
@@ -70,6 +71,8 @@ Fixed::Fixed(const float f)
 	memcpy(&raw[1], &integ, 3);
 
 	memcpy(&raw2, raw, sizeof(int));
+//	if (f < 0 && f > -1)
+//		raw2 = -raw2;
 	setRawBits(raw2);
 }
 
@@ -210,6 +213,23 @@ Fixed& min(Fixed& a, Fixed& b)
 		return (b);
 }
 
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	if (a <= b)
+		return (a);
+	else
+		return (b);
+}
+
+
 // increments
 
 Fixed Fixed::operator ++ (void)
@@ -237,20 +257,3 @@ Fixed Fixed::operator -- (int)
 	_n -= 1;
 	return (b);
 }
-/*
-int& max(Fixed& a, Fixed& b)
-{
-	if (a >= b)
-		return (a.getRawBits());
-	else
-		return (b.getRawBits());
-}
-
-int& min(Fixed& a, Fixed& b)
-{
-	if (a <= b)
-		return (a.getRawBits());
-	else
-		return (b.getRawBits());
-}
-*/

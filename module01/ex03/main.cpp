@@ -16,6 +16,4 @@ int main()
 	ZombieHorde zh2(100);
 	zh2.announce();
 	test_leaks();
-	while (1);
-
 }

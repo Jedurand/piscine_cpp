@@ -2,7 +2,7 @@
 
 ZombieEvent::ZombieEvent()
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 }
 
 void ZombieEvent::setZombieType(Zombie *zombie, std::string type)
