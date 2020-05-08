@@ -1,3 +1,6 @@
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
 #include <iostream>
 #include <ctime>
 #include <cctype>
@@ -17,13 +20,4 @@ class Zombie
 	std::string _name;
 };
 
-class ZombieEvent
-{
-	public:
-	ZombieEvent();
-	void setZombieType(Zombie *zombie, std::string type = "");
-	Zombie *newZombie(std::string name);
-	void randomChum();
-	void exterminatum();
-	std::string randomize();
-};
+#endif

@@ -5,13 +5,14 @@ Brain::Brain()
 	_iq = 145;
 }
 
-void *Brain::iddentifier()
+std::string Brain::iddentify() const
 {
-	void *add = this;
-	return (add);
+	std::stringstream sstream;
+	sstream << this;
+	return (sstream.str());
 }
 
-void *Brain::iddentify()
+int Brain::testIq() const
 {
-	return (iddentifier());
-}		
+	return (_iq);
+}

@@ -1,6 +1,6 @@
 NAME	=	a.out
 
-SRCS	=	Pony.cpp main.cpp
+SRCS	=	ex04.cpp
 
 LIBS	=
 

@@ -8,12 +8,11 @@ class Weapon
 {
 	public:
 	Weapon(std::string type = "Normal club");
-	std::string&  	getType();
-	void		setType(std::string type = "Normal club");	
+	const std::string& getType();
+	void setType(std::string type = "Normal club");
 
 	private:
 	std::string _type;
 };
 
 #endif
-

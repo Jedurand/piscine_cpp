@@ -1,4 +1,6 @@
 #include "Zombie.hpp"
+#include "ZombieEvent.hpp"
+#include "ZombieHorde.hpp"
 
 void	test_leaks()
 {
@@ -11,8 +13,8 @@ int main()
 	ZombieHorde *zh = new ZombieHorde(15);
 	zh->announce();
 	delete(zh);
-//	ZombieHorde zh2(100);
-//	zh2.announce();
+	ZombieHorde zh2(100);
+	zh2.announce();
 	test_leaks();
 	while (1);
 

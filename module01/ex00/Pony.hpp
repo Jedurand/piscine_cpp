@@ -1,3 +1,6 @@
+#ifndef PONY_HPP
+#define PONY_HPP
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -23,3 +26,5 @@ class Pony
 	int		_stamina;
 	std::string	_color;
 };
+
+#endif

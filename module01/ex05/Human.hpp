@@ -7,12 +7,11 @@ class Human
 {
 	public:
 	Human();
-	void *iddentify();
-	void *iddentifier();
-	Brain& getBrain();
+	std::string iddentify() const;
+	const Brain& getBrain() const;
 
 	private:
-	Brain _brain;
+	const Brain _brain;
 };
 
 #endif

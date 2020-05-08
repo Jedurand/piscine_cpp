@@ -4,18 +4,12 @@ Human::Human()
 {
 }
 
-void *Human::iddentifier()
+std::string Human::iddentify() const
 {
 	return (this->_brain.iddentify());
 }
 
-void *Human::iddentify()
-{
-	return (iddentifier());
-}
-
-Brain& Human::getBrain()
+const Brain& Human::getBrain() const
 {
 	return (_brain);
 }
-

@@ -3,14 +3,15 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class Brain
 {
 	public:
 	Brain();
-	void *iddentify();
-	void *iddentifier();
-	
+	std::string iddentify() const;
+	int testIq() const;
+
 	private:
 	int _iq;
 };

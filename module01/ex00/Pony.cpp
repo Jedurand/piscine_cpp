@@ -3,7 +3,7 @@
 std::string Pony::rand_color()
 {
 	int i(std::rand() % 3);
-	
+
 	if (i == 0)
 		return ("black");
 	else if (i == 1)
@@ -33,6 +33,7 @@ std::string Pony::rand_race()
 Pony::Pony()
 {
 	std::srand(std::time(nullptr));
+	std::cout << "Enter pony name: ";
 	std::getline(std::cin, _name);
 	_velocity = std::rand() % 100;
 	_height = std::rand() % 200 + 100;
