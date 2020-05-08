@@ -1,4 +1,4 @@
-NAME	=	a.out
+NAME	=	replace
 
 SRCS	=	sed.cpp
 
