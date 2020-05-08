@@ -8,5 +8,8 @@ HumanA::HumanA(std::string name, Weapon& weapon)
 
 void HumanA::attack()
 {
-	std::cout << _name + " attacks with his " + _weapon->getType() + "\n";
+	if (_weapon != nullptr)
+		std::cout << _name + " attacks with his " + _weapon->getType() + "\n";
+	else
+		std::cout << _name + " got no weapon, bad idea, bad idea ...\n";
 }
