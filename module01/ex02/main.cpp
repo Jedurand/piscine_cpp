@@ -15,5 +15,4 @@ int main()
 	delete(z2);
 	ze.randomChum();
 	ze.randomChum();
-//	while (1);
 }

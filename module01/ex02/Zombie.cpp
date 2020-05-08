@@ -6,6 +6,11 @@ Zombie::Zombie(std::string name)
 	_type = "Generic boring Zombie";
 }
 
+Zombie::~Zombie()
+{
+	std::cout << "Zombie: " << _name << " has been destroyed\n";
+}
+
 void Zombie::advert()
 {
 	std::cout << "<" + _name + " " + "(" + _type + ")> Brrrrrrraaaaaaaaiiiiinnssss\n";

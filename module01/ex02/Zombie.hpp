@@ -11,6 +11,8 @@ class Zombie
 {
 	public:
 	Zombie(std::string name = "");
+	~Zombie();
+	
 	void advert();
 	void do_type(std::string type = "Generic boring Zombie");
 	void announce();
