@@ -4,12 +4,12 @@ Character::Character(std::string name)
 {
 	_name = name;
 	_ap = 40;
-	_weapon = nullptr;
+	_weapon = NULL;
 }
 
 Character::~Character()
 {
-//	if (_weapon != nullptr)
+//	if (_weapon != NULL)
 //		delete(_weapon);
 }
 
@@ -39,7 +39,7 @@ int Character::getAp() const
 
 void Character::printInfo() const
 {
-	if (_weapon == nullptr)
+	if (_weapon == NULL)
 		std::cout << "None Weapon equiped\n";
 	else
 		std::cout << _weapon->getName() << " " << _weapon->getDamage() << std::endl;
@@ -47,7 +47,7 @@ void Character::printInfo() const
 
 void Character::equip(AWeapon* weapon)
 {
-	if (weapon == nullptr)
+	if (weapon == NULL)
 		return ;
 	_weapon = weapon;
 	std::cout << _weapon->getName() << " equiped ...\n";
@@ -63,7 +63,7 @@ void Character::recoverAp()
 
 void Character::attack(Enemy* enemy)
 {
-	if (enemy == nullptr || _weapon == nullptr)
+	if (enemy == NULL || _weapon == NULL)
 		return ;
 	if (enemy->getHp() <= 0)
 		return ;
@@ -79,13 +79,13 @@ void Character::attack(Enemy* enemy)
 	if (enemy->getHp() <= 0)
 	{
 		delete(enemy);
-		enemy = nullptr;
+		enemy = NULL;
 	}
 }
 
 std::string Character::carries() const
 {
-	if (_weapon == nullptr)
+	if (_weapon == NULL)
 		return ("is unarmed");
 	return ("carries " + _weapon->getName());
 }	

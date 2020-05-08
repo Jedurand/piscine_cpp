@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	std::cout << "ClapTrap Constructor called\n";
 	_name = name;
 	_hitPoints = 100;
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(const ClapTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -31,7 +31,7 @@ ClapTrap::ClapTrap(const ClapTrap& ori)
 
 void ClapTrap::operator = (const ClapTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;

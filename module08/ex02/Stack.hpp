@@ -26,7 +26,7 @@ class MutantStack
 		// overloads:
 		Iterator()
 		{
-			_el = nullptr;
+			_el = NULL;
 		}
 
 		Iterator(const Iterator& it)
@@ -89,7 +89,7 @@ class MutantStack
 	public:
 	MutantStack()
 	{
-		_stack = nullptr;
+		_stack = NULL;
 		_size = 0;
 	//	_container_type = "MutantStack";
 		_size_type = "Unsigned int";
@@ -138,7 +138,7 @@ class MutantStack
 			_stack = _stack->next;
 			delete (prev);
 		}
-		_stack = nullptr;
+		_stack = NULL;
 		bstack = stack._stack;
 		while (bstack)
 		{
@@ -173,7 +173,7 @@ class MutantStack
 		{
 			_stack = new El;
 			_stack->_el = el;
-			_stack->_next = nullptr;
+			_stack->_next = NULL;
 		}
 		else
 		{

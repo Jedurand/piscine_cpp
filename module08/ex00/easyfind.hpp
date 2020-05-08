@@ -22,7 +22,7 @@ int *easyfind(T& container, int value)
 	catch (std::exception& e)
 	{
 		std::cout << "Exception: Value not find or container is empty\n";
-		return (nullptr);
+		return (NULL);
 	}
 }
 

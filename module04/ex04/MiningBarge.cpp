@@ -3,7 +3,7 @@
 MiningBarge::MiningBarge()
 {
 	for (int i = 0; i < 4; i++)
-		_hardPoints[i] = nullptr;	
+		_hardPoints[i] = NULL;	
 }
 
 MiningBarge::~MiningBarge()
@@ -27,7 +27,7 @@ void MiningBarge::equip(IMiningLaser* laser)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (_hardPoints[i] == nullptr)
+		if (_hardPoints[i] == NULL)
 		{
 			_hardPoints[i] = laser;
 			break ;
@@ -37,7 +37,7 @@ void MiningBarge::equip(IMiningLaser* laser)
 
 void MiningBarge::mine(IAsteroid* asteroid) const
 {
-	for (int i = 0; i < 4 && _hardPoints[i] != nullptr; i++)
+	for (int i = 0; i < 4 && _hardPoints[i] != NULL; i++)
 	{
 		_hardPoints[i]->mine(asteroid);
 	}

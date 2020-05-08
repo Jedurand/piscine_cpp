@@ -20,7 +20,7 @@ static char rand_alpha()
 
 void *serialize(void)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	unsigned char *p;
 	unsigned char rand = 0;
 	int i = 0;

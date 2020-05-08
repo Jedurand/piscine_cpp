@@ -40,7 +40,7 @@ Form* Intern::makeForm(std::string name, std::string target)
 			return (_forms[i](target));
 	}
 	std::cout << "Form not found\n";
-	return (nullptr);
+	return (NULL);
 }
 
 Form* Intern::makeShubberryCreationForm(std::string target)

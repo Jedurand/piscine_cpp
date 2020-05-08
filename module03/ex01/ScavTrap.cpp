@@ -2,7 +2,7 @@
 
 ScavTrap::ScavTrap(std::string name)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	std::cout << "Scav Constructor called\n";
 	_name = name;
 	_hitPoints = 100;
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name)
 
 ScavTrap::ScavTrap(const ScavTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(const ScavTrap& ori)
 
 void ScavTrap::operator = (const ScavTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;

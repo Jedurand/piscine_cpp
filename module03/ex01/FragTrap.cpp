@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap(std::string name)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	std::cout << "Constructor called\n";
 	_name = name;
 	_hitPoints = 100;
@@ -17,7 +17,7 @@ FragTrap::FragTrap(std::string name)
 
 FragTrap::FragTrap(const FragTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -31,7 +31,7 @@ FragTrap::FragTrap(const FragTrap& ori)
 
 void FragTrap::operator = (const FragTrap& ori)
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;

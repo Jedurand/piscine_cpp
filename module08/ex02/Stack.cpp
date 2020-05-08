@@ -3,7 +3,7 @@
 template<typename T>
 MutantStack<T>::MutantStack()
 {
-	_stack = nullptr;
+	_stack = NULL;
 	_size = 0;
 //	_container_type = "MutantStack";
 	_size_type = "Unsigned int";
@@ -67,7 +67,7 @@ void MutantStack<T>::push(const T& el)
 	{
 		_stack = new El;
 		_stack->_el = el;
-		_stack->next = nullptr;
+		_stack->next = NULL;
 	}
 	else
 	{
