@@ -21,7 +21,7 @@ c	:
 		$(CC) -o $(NAME) $(SRCS)
 
 wall	:
-		$(CC) -o $(NAME) $(FLAGS) $(SRCS)
+		$(CC) -o $(NAME) -std=c++98 $(FLAGS) $(SRCS)
 
 clean	:
 

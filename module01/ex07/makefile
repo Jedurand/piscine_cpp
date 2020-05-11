@@ -1,33 +1,43 @@
-NAME	=	replace
 
-SRCS	=	sed.cpp
+NAME		=	replace
 
-LIBS	=
+SRCS	=	./sed.cpp
 
-CC	=	clang++
+CC		=	clang++
 
-OBJS	=	$(SRCS:.cpp)
+SANI	=	-fsanitize=address -g3
 
-FLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
-RM		=	rm -rf
+OBJS	=	$(SRCS:.cpp=.o)
 
-all	:
-		make wall
+RM		= rm -rf
 
-NAME	:
+SAFETY	=	-std=c++98
 
-c	:
-		$(CC) -o $(NAME) $(SRCS)
+all	:	$(NAME)
 
-wall	:
-		$(CC) -o $(NAME) $(FLAGS) $(SRCS)
+$(NAME): $(OBJS)
+		$(CC) -o $(NAME) $(SAFETY) $(CFLAGS) $(OBJS)
+
+c1	:
+		clean
+		$(CC) -o $(NAME) $(OBJS) $(SRCS)
+
+s1	:
+		clean
+		$(CC) -o $(NAME) $(SANI) $(SRCS)
+
+w1	:
+		clean
+		$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
 
 clean	:
+		$(RM) $(OBJS)
 
 fclean	:	clean
 		$(RM) $(NAME)
 
 re	:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY	:	clean fclean all c1 s1 w1
