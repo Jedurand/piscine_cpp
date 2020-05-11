@@ -3,6 +3,7 @@
 Fixed::Fixed()
 {
 	_n = 0;
+	_sign = 0;
 }
 
 Fixed::~Fixed()
@@ -56,8 +57,6 @@ Fixed::Fixed(const float f)
 	}
 	else
 		dec = 0.0;
-	std::cout << "here " << f << " " << integ << std::endl;
-	std::cout << dec << std::endl;
 	for (int i = 7; i >= 0; i--)
 	{
 		dec *= 2;
@@ -74,6 +73,8 @@ Fixed::Fixed(const float f)
 //	if (f < 0 && f > -1)
 //		raw2 = -raw2;
 	setRawBits(raw2);
+	if (f > -1 && f < 0)
+		_sign = 1;
 }
 
 int Fixed::getFixedPoint()
@@ -119,6 +120,8 @@ float Fixed::toFloat(void) const
 		fs = ".0";
 
 	s = s + fs;
+	if (_sign == 1)
+		return (-(std::stof(s)));
 	return (std::stof(s));
 }
 /*
