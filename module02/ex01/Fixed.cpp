@@ -3,6 +3,7 @@
 Fixed::Fixed()
 {
 	_n = 0;
+	_sign = 0;
 }
 
 Fixed::~Fixed()
@@ -32,6 +33,7 @@ void Fixed::setRawBits(int const raw)
 // Other constructors
 Fixed::Fixed(const int n)
 {
+	_sign = 0;
 	setRawBits(n << 8);
 }
 
@@ -71,6 +73,10 @@ Fixed::Fixed(const float f)
 
 	memcpy(&raw2, raw, sizeof(int));
 	setRawBits(raw2);
+	if (f > -1 && f < 0)
+		_sign = 1;
+	else
+		_sign = 0;
 }
 
 int Fixed::getFixedPoint()
@@ -116,6 +122,8 @@ float Fixed::toFloat(void) const
 		fs = ".0";
 
 	s = s + fs;
+	if (_sign == 1)
+		return (-(std::stof(s)));
 	return (std::stof(s));
 }
 

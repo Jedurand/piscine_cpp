@@ -70,11 +70,11 @@ Fixed::Fixed(const float f)
 	memcpy(&raw[1], &integ, 3);
 
 	memcpy(&raw2, raw, sizeof(int));
-//	if (f < 0 && f > -1)
-//		raw2 = -raw2;
 	setRawBits(raw2);
 	if (f > -1 && f < 0)
 		_sign = 1;
+	else
+		_sign = 0;
 }
 
 int Fixed::getFixedPoint()

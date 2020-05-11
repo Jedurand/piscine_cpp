@@ -12,6 +12,7 @@ class Fixed
 {
 	private:
 	int 				_n;
+	bool				_sign;
 	static const int	_fixed_point = 8;
 
 	public:
