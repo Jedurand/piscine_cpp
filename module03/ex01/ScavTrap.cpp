@@ -18,6 +18,7 @@ ScavTrap::ScavTrap(std::string name)
 ScavTrap::ScavTrap(const ScavTrap& ori)
 {
 	std::srand(std::time(NULL));
+	std::cout << "ScavTrap Copy Constructor called\n";
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -32,6 +33,7 @@ ScavTrap::ScavTrap(const ScavTrap& ori)
 void ScavTrap::operator = (const ScavTrap& ori)
 {
 	std::srand(std::time(NULL));
+	std::cout << "ScavTrap egal overload called\n";
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -41,7 +43,7 @@ void ScavTrap::operator = (const ScavTrap& ori)
 	_meleeDamage = ori._meleeDamage;
 	_rangedDamage = ori._rangedDamage;
 	_damageReduction = ori._damageReduction;
-}	
+}
 
 ScavTrap::~ScavTrap()
 {
@@ -60,8 +62,13 @@ void ScavTrap::meleeAttack(const std::string& target)
 
 void ScavTrap::takeDamage(unsigned int ammount)
 {
-	if ((ammount - _damageReduction) <= _hitPoints)
-		_hitPoints -= (ammount - _damageReduction);
+	int damage;
+
+	damage = ammount - _damageReduction;
+	if (damage < 0)
+		damage = 0;
+	if (damage <= _hitPoints)
+		_hitPoints -= damage;
 	else
 		_hitPoints = 0;
 	std::cout << "Aiiiiiiiiiiiiiiiiie, ... ANALYSING ... REMAINING HITPOINTS: " << _hitPoints << std::endl;
@@ -78,8 +85,7 @@ void ScavTrap::beRepaired(unsigned int ammount)
 
 std::string ScavTrap::randomizeChallenge()
 {
-	std::string 	random;
-	int		seed;
+	int				seed;
 
 	seed = std::rand() % (6 - 1) + 1;
 	if (seed == 1)
@@ -100,4 +106,3 @@ void ScavTrap::challengeNewcomer()
 {
 	std::cout << _name + ": " + randomizeChallenge() << std::endl;
 }
-	

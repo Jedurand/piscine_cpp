@@ -14,11 +14,13 @@ class NinjaTrap: public ClapTrap
 {
 	public:
 	NinjaTrap(std::string name);
+	NinjaTrap(const NinjaTrap& ninjaTrap);
+	void operator = (const NinjaTrap& ninjaTrap);
 	~NinjaTrap();
-	
+
 	void ninjaShoebox(FragTrap& clapTrap);
 	void ninjaShoebox(ScavTrap& clapTrap);
-	void ninjaShoebox(NinjaTrap& clapTrap);	
+	void ninjaShoebox(NinjaTrap& clapTrap);
 };
 
 #endif

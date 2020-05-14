@@ -9,7 +9,7 @@ class ScavTrap
 	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap &ori);
 	~ScavTrap();
-	
+
 	void operator = (const ScavTrap& ori);
 
 	void rangedAttack(const std::string& target);
@@ -18,10 +18,10 @@ class ScavTrap
 	void beRepaired(unsigned int ammount);
 
 	std::string randomizeChallenge();
-	void challengeNewcomer();	
+	void challengeNewcomer();
 
 	private:
-	std::string	_name;
+	std::string		_name;
 	unsigned int 	_hitPoints;
 	unsigned int 	_maxHitPoints;
 	unsigned int 	_energyPoints;
@@ -29,6 +29,5 @@ class ScavTrap
 	unsigned int 	_level;
 	unsigned int 	_meleeDamage;
 	unsigned int 	_rangedDamage;
-	int		_damageReduction;
+	int				_damageReduction;
 };
-		

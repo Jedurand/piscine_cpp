@@ -3,7 +3,7 @@
 FragTrap::FragTrap(std::string name)
 {
 	std::srand(std::time(NULL));
-	std::cout << "Constructor called\n";
+	std::cout << "FragTrap Constructor called\n";
 	_name = name;
 	_hitPoints = 100;
 	_maxHitPoints = 100;
@@ -18,6 +18,7 @@ FragTrap::FragTrap(std::string name)
 FragTrap::FragTrap(const FragTrap& ori)
 {
 	std::srand(std::time(NULL));
+	std::cout << "FragTrap Copy Constructor called\n";
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -32,6 +33,7 @@ FragTrap::FragTrap(const FragTrap& ori)
 void FragTrap::operator = (const FragTrap& ori)
 {
 	std::srand(std::time(NULL));
+	std::cout << "FragTrap equal overload called\n";
 	_name = ori._name;
 	_hitPoints = ori._hitPoints;
 	_maxHitPoints = ori._maxHitPoints;
@@ -41,7 +43,7 @@ void FragTrap::operator = (const FragTrap& ori)
 	_meleeDamage = ori._meleeDamage;
 	_rangedDamage = ori._rangedDamage;
 	_damageReduction = ori._damageReduction;
-}	
+}
 
 FragTrap::~FragTrap()
 {
@@ -60,8 +62,13 @@ void FragTrap::meleeAttack(const std::string& target)
 
 void FragTrap::takeDamage(unsigned int ammount)
 {
-	if ((ammount - _damageReduction) <= _hitPoints)
-		_hitPoints -= (ammount - _damageReduction);
+	int damage;
+
+	damage = ammount - _damageReduction;
+	if (damage < 0)
+		damage = 0;
+	if (damage <= _hitPoints)
+		_hitPoints -= damage;
 	else
 		_hitPoints = 0;
 	std::cout << "Aiiiiiiiiiiiiiiiiie, ... ANALYSING ... REMAINING HITPOINTS: " << _hitPoints << std::endl;

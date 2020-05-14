@@ -48,5 +48,6 @@ int main(void)
 	std::cout << fd1.toFloat() << " " << fd2.toFloat() << " " <<
 	fd3.toFloat() << " " << fd4.toFloat() << std::endl;
 
+
 	return (0);
 }

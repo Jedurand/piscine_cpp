@@ -1,7 +1,7 @@
 #include "FragTrap.hpp"
 #include "ClapTrap.hpp"
 
-FragTrap::FragTrap(std::string name): ClapTrap(name)
+FragTrap::FragTrap(std::string name): ClapTrap(name, 100, 100, 100, 100, 1, 30, 20, 5)
 {
 	std::cout << "FragTrap constructor called\n";
 }
@@ -9,6 +9,27 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap destructor called\n";
+}
+
+FragTrap::FragTrap(const FragTrap& ori): ClapTrap(ori)
+{
+	std::srand(std::time(NULL));
+	std::cout << "FragTrap copy Constructor called\n";
+}
+
+void FragTrap::operator = (const FragTrap& ori)
+{
+	std::srand(std::time(NULL));
+	std::cout << "FragTrap equal overload called\n";
+	_name = ori._name;
+	_hitPoints = ori._hitPoints;
+	_maxHitPoints = ori._maxHitPoints;
+	_energyPoints = ori._energyPoints;
+	_maxEnergyPoints = ori._maxEnergyPoints;
+	_level = ori._level;
+	_meleeDamage = ori._meleeDamage;
+	_rangedDamage = ori._rangedDamage;
+	_damageReduction = ori._damageReduction;
 }
 
 std::string FragTrap::randomizeAttack()

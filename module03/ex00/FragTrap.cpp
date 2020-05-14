@@ -60,8 +60,13 @@ void FragTrap::meleeAttack(const std::string& target)
 
 void FragTrap::takeDamage(unsigned int ammount)
 {
-	if ((ammount - _damageReduction) <= _hitPoints)
-		_hitPoints -= (ammount - _damageReduction);
+	int damage;
+
+	damage = ammount - _damageReduction;
+	if (damage < 0)
+		damage = 0;
+	if (damage <= _hitPoints)
+		_hitPoints -= damage;
 	else
 		_hitPoints = 0;
 	std::cout << "Aiiiiiiiiiiiiiiiiie, ... ANALYSING ... REMAINING HITPOINTS: " << _hitPoints << std::endl;

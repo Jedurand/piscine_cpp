@@ -12,10 +12,12 @@ class ScavTrap: public ClapTrap
 {
 	public:
 	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap&);
+	void operator = (const ScavTrap&);
 	~ScavTrap();
 
 	std::string randomizeChallenge();
-	void challengeNewcomer();	
+	void challengeNewcomer();
 };
-		
+
 #endif

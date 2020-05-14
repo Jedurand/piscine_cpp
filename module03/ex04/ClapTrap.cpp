@@ -1,18 +1,20 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name, unsigned int hp, unsigned int maxhp, unsigned int mana,
+unsigned int maxmana, unsigned int level, unsigned int melee, unsigned int ranged,
+unsigned int armor)
 {
 	std::srand(std::time(NULL));
 	std::cout << "ClapTrap Constructor called\n";
 	_name = name;
-	_hitPoints = 100;
-	_maxHitPoints = 100;
-	_energyPoints = 100;
-	_maxEnergyPoints = 100;
-	_level = 1;
-	_meleeDamage = 30;
-	_rangedDamage = 20;
-	_damageReduction = 5;
+	_hitPoints = hp;
+	_maxHitPoints = maxhp;
+	_energyPoints = mana;
+	_maxEnergyPoints = maxmana;
+	_level = level;
+	_meleeDamage = melee;
+	_rangedDamage = ranged;
+	_damageReduction = armor;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& ori)
@@ -41,7 +43,7 @@ void ClapTrap::operator = (const ClapTrap& ori)
 	_meleeDamage = ori._meleeDamage;
 	_rangedDamage = ori._rangedDamage;
 	_damageReduction = ori._damageReduction;
-}	
+}
 
 ClapTrap::~ClapTrap()
 {
@@ -75,4 +77,3 @@ void ClapTrap::beRepaired(unsigned int ammount)
 		_hitPoints = _maxHitPoints;
 	std::cout << "Je me lubrifie !!! ... Hit points: " << _hitPoints << std::endl;
 }
-
