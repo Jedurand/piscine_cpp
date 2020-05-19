@@ -129,9 +129,18 @@ int main(void)
 	std::cout << zero-- << std::endl;
 	std::cout << zero << std::endl;
 
+
 	std::cout << Fixed(-1) << " " <<
 	Fixed(-1.0f) << " " <<
 	Fixed(-0.5f) << " " << Fixed(-3.01f) << std::endl;
+
+	Fixed test(-0.5f);
+	Fixed zero2(0);
+
+	std::cout << "Max between " << test << " and " << zero2 << " = ";
+	std::cout << Fixed::max(test, zero2) << std::endl;
+	std::cout << "Min between " << test << " and " << zero2 << " = ";
+	std::cout << Fixed::min(test, zero2) << std::endl;
 
 	return (0);
 }

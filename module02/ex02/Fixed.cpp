@@ -243,7 +243,7 @@ Fixed Fixed::operator ++ (void)
 
 Fixed Fixed::operator -- (void)
 {
-	_n -= 1;
+	_n--;
 	return (*this);
 }
 
@@ -257,6 +257,6 @@ Fixed Fixed::operator ++ (int)
 Fixed Fixed::operator -- (int)
 {
 	Fixed b = *this;
-	_n -= 1;
+	_n--;
 	return (b);
 }

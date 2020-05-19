@@ -39,7 +39,6 @@ Fixed::Fixed(const int n)
 
 Fixed::Fixed(const float f)
 {
-	// i write the dec part into a stream to get the exast length, to_string gives bad results;
 	unsigned char raw[sizeof(int)];
 	int integ = (int)f;
 	std::stringstream ost;
@@ -50,7 +49,6 @@ Fixed::Fixed(const float f)
 
 	ost << f;
 	std::string fs = ost.str();
-
 	if (fs.find('.') < fs.size())
 	{
 		fs = "0" + fs.substr(fs.find('.'));
@@ -68,9 +66,7 @@ Fixed::Fixed(const float f)
 			dec = dec - 1;
 		}
 	}
-
 	memcpy(&raw[1], &integ, 3);
-
 	memcpy(&raw2, raw, sizeof(int));
 	setRawBits(raw2);
 	if (f > -1 && f < 0)
@@ -129,36 +125,5 @@ float Fixed::toFloat(void) const
 
 std::ostream& operator << (std::ostream &out, Fixed& b)
 {
-	/*unsigned char raw[sizeof(int)];
-	int raw_i = b.getRawBits();
-	std::stringstream ost;
-
-	memcpy(raw, &raw_i, sizeof(int));
-
-	std::string s = "";
-	s.append(std::to_string(raw_i >> 8));
-
-	float dec = 0;
-	int j = 7;
-	for (int i = 1; i <= 8; i++)
-	{
-		if (raw[0] >= pow(2, j))
-		{
-			dec += pow(2, -i);
-			raw[0] -= pow(2, j);
-		}
-		j--;
-	}
-
-	ost << dec;
-	std::string fs = ost.str();
-
-	if (fs.find('.') < fs.size())
-		fs = fs.substr(fs.find('.'));
-	else
-		fs = ".0";
-
-	s = s += fs;
-	return (out << s); */
 	return (out << b.toFloat());
 }
