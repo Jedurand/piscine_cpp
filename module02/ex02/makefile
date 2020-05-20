@@ -1,33 +1,41 @@
-NAME	=	a.out
 
-SRCS	=	Fixed.cpp main.cpp
+NAME		=	a.out
 
-LIBS	=
+SRCS	=	./Fixed.cpp ./main.cpp
 
-CC	=	clang++
+CC		=	clang++
 
-OBJS	=	$(SRCS:.cpp)
+SANI	=	-fsanitize=address -g3
 
-FLAGS	=	-Wall -Wextra -Werror
+CPPFLAGS	=	-Wall -Wextra -Werror
 
-RM		=	rm -rf
+OBJS	=	$(SRCS:.cpp=.o)
 
-all	:
-		make wall
+RM		= rm -rf
 
-NAME	:
+all	:	$(NAME)
 
-c	:
-		$(CC) -o $(NAME) $(SRCS)
+$(NAME): $(OBJS)
+		$(CC) -o $(NAME) $(CPPFLAGS) $(OBJS)
 
-wall	:
-		$(CC) -o $(NAME) $(FLAGS) $(SRCS)
+c1	:
+		clean
+		$(CC) -o $(NAME) $(OBJS) $(SRCS)
+
+s1	:
+		clean
+		$(CC) -o $(NAME) $(SANI) $(SRCS)
+
+w1	:
+		clean
+		$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
 
 clean	:
+		$(RM) $(OBJS)
 
 fclean	:	clean
 		$(RM) $(NAME)
 
 re	:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY	:	clean fclean all c1 s1 w1

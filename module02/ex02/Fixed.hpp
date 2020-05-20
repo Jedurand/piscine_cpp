@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <bitset>
 #include <cmath>
-#include <cstdio>
 #include <sstream>
 
 class Fixed

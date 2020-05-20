@@ -1,29 +1,41 @@
-NAME	=	megaphone
 
-SRCS	=	megaphone.cpp
+NAME		=
 
-LIBS	=	-lstdc++
+SRCS	=
 
-CC	=	gcc
+CC		=	clang++
+
+SANI	=	-fsanitize=address -g3
+
+CPPFLAGS	=	-Wall -Wextra -Werror
 
 OBJS	=	$(SRCS:.cpp=.o)
 
-FLAGS	=	-Wall -Wextra -Werror
+RM		= rm -rf
 
 all	:	$(NAME)
-		$(CC) $(LIBS) -o $(NAME) $(FLAGS) $(SRCS)
 
-c	:
-		$(CC) $(LIBS) -o $(NAME) $(SRCS)	
+$(NAME): $(OBJS)
+		$(CC) -o $(NAME) $(CPPFLAGS) $(OBJS)
+
+c1	:
+		clean
+		$(CC) -o $(NAME) $(OBJS) $(SRCS)
+
+s1	:
+		clean
+		$(CC) -o $(NAME) $(SANI) $(SRCS)
+
+w1	:
+		clean
+		$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
 
 clean	:
-		echo "Cleaning"
-#		test -f $(OBJS) && rm $(OBJS)	
-#		if [- f "$(OBJS)"]; then rm $(OBJS) fi
+		$(RM) $(OBJS)
 
 fclean	:	clean
-		rm $(NAME)
+		$(RM) $(NAME)
 
 re	:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY	:	clean fclean all c1 s1 w1

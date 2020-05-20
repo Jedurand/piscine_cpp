@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <bitset>
 
 class Fixed
 {
