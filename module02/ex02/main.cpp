@@ -105,6 +105,14 @@ int main(void)
 	cmp = (ff7 < ff8);
 	std::cout << ff7 << " < " << ff8 << ": " << cmp << std::endl;
 
+	cmp = (Fixed(-12.12f) >= Fixed(-13));
+	std::cout << Fixed(-12.12f) << " >= " << Fixed(-13) << ": " << cmp << std::endl;
+
+	cmp = (Fixed(-1) <= Fixed(0));
+	std::cout << Fixed(-1) << " <= " << Fixed(0) << ": " << cmp << std::endl;
+	cmp = (Fixed(-1.5f) <= Fixed(-1.5f));
+	std::cout << Fixed(-2.5f) << " <= " << Fixed(-1.5f) << ": " << cmp << std::endl;
+
 	std::cout << "\n\n -- Min/Max -- \n\n";
 
 	std::cout << "Max between " << ff2 << " and " << ff3 << " = ";
@@ -129,18 +137,6 @@ int main(void)
 	std::cout << zero-- << std::endl;
 	std::cout << zero << std::endl;
 
-
-	std::cout << Fixed(-1) << " " <<
-	Fixed(-1.0f) << " " <<
-	Fixed(-0.5f) << " " << Fixed(-3.01f) << std::endl;
-
-	Fixed test(-0.5f);
-	Fixed zero2(0);
-
-	std::cout << "Max between " << test << " and " << zero2 << " = ";
-	std::cout << Fixed::max(test, zero2) << std::endl;
-	std::cout << "Min between " << test << " and " << zero2 << " = ";
-	std::cout << Fixed::min(test, zero2) << std::endl;
 
 	return (0);
 }

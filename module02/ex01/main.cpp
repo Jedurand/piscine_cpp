@@ -47,8 +47,10 @@ int main(void)
 	equal = ff2;
 	Fixed equal2;
 	equal2 = fd2;
+	Fixed copyf5 = ff5;
 	std::cout << "Test caplienne: " << ff2 << " " << copyf << " " << equal << std::endl;
 	std::cout << "Test caplienne: " << fd2 << " " << copyf2 << " " << equal2 << std::endl;
+	std::cout << "Test caplienne: " << ff5 << " " << copyf5 << std::endl;
 
 
 

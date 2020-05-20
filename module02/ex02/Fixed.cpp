@@ -13,11 +13,13 @@ Fixed::~Fixed()
 Fixed::Fixed(const Fixed& ori)
 {
 	_n = ori.getRawBits();
+	_sign = ori._sign;
 }
 
 void Fixed::operator = (const Fixed& ori)
 {
 	this->_n = ori.getRawBits();
+	this->_sign = ori._sign;
 }
 
 int Fixed::getRawBits(void) const
@@ -33,12 +35,12 @@ void Fixed::setRawBits(int const raw)
 // Other constructors
 Fixed::Fixed(const int n)
 {
-	setRawBits(n << 8);
+	setRawBits(n << _fixed_point);
+	_sign = 0;
 }
 
 Fixed::Fixed(const float f)
 {
-	// i write the dec part into a stream to get the exast length, to_string gives bad results;
 	unsigned char raw[sizeof(int)];
 	int integ = (int)f;
 	std::stringstream ost;
@@ -49,7 +51,6 @@ Fixed::Fixed(const float f)
 
 	ost << f;
 	std::string fs = ost.str();
-
 	if (fs.find('.') < fs.size())
 	{
 		fs = "0" + fs.substr(fs.find('.'));
@@ -57,6 +58,7 @@ Fixed::Fixed(const float f)
 	}
 	else
 		dec = 0.0;
+
 	for (int i = 7; i >= 0; i--)
 	{
 		dec *= 2;
@@ -66,13 +68,14 @@ Fixed::Fixed(const float f)
 			dec = dec - 1;
 		}
 	}
-
 	memcpy(&raw[1], &integ, 3);
-
 	memcpy(&raw2, raw, sizeof(int));
 	setRawBits(raw2);
 	if (f > -1 && f < 0)
+	{
+		std::cout << "merde\n";
 		_sign = 1;
+	}
 	else
 		_sign = 0;
 }
@@ -84,7 +87,7 @@ int Fixed::getFixedPoint()
 
 int Fixed::toInt(void) const
 {
-	return (_n >> 8);
+	return (_n >> _fixed_point);
 }
 
 float Fixed::toFloat(void) const
@@ -97,11 +100,11 @@ float Fixed::toFloat(void) const
 	memcpy(raw, &raw_i, sizeof(int));
 
 	std::string s = "";
-	s.append(std::to_string(raw_i >> 8));
+	s.append(std::to_string(raw_i >> _fixed_point));
 
 	float dec = 0;
 	int j = 7;
-	for (int i = 1; i <= 8; i++)
+	for (int i = 1; i <= _fixed_point; i++)
 	{
 		if (raw[0] >= pow(2, j))
 		{
@@ -121,7 +124,9 @@ float Fixed::toFloat(void) const
 
 	s = s + fs;
 	if (_sign == 1)
+	{
 		return (-(std::stof(s)));
+	}
 	return (std::stof(s));
 }
 /*
@@ -153,27 +158,27 @@ bool Fixed::operator != (const Fixed& b)
 
 bool Fixed::operator < (const Fixed& b)
 {
-	if (getRawBits() < b.getRawBits())
+	if (toFloat() < b.toFloat())
 		return (1);
 	return (0);
 }
 bool Fixed::operator <= (const Fixed& b)
 {
-	if (getRawBits() <= b.getRawBits())
+	if (toFloat() < b.toFloat() || getRawBits() == b.getRawBits())
 		return (1);
 	return (0);
 }
 
 bool Fixed::operator > (const Fixed& b)
 {
-	if (getRawBits() > b.getRawBits())
+	if (toFloat() > b.toFloat())
 		return (1);
 	return (0);
 }
 
 bool Fixed::operator >= (const Fixed& b)
 {
-	if (getRawBits() >= b.getRawBits())
+	if (toFloat() > b.toFloat() || getRawBits() == b.getRawBits())
 		return (1);
 	return (0);
 }
@@ -243,7 +248,7 @@ Fixed Fixed::operator ++ (void)
 
 Fixed Fixed::operator -- (void)
 {
-	_n--;
+	--_n;
 	return (*this);
 }
 
@@ -257,6 +262,6 @@ Fixed Fixed::operator ++ (int)
 Fixed Fixed::operator -- (int)
 {
 	Fixed b = *this;
-	_n--;
+		_n--;
 	return (b);
 }
