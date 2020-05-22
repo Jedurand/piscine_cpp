@@ -43,6 +43,8 @@ int main()
 
 	std::cout << "------ENTER THE SUPERTRAP--------\n";
 	SuperTrap su("Superman");
+	std::cout << "\n";
+	su.print_test();
 	su.takeDamage(25);
 	SuperTrap su2(su);
 	su2.takeDamage(25);

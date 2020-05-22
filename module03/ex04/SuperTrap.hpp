@@ -9,14 +9,14 @@ class SuperTrap: public FragTrap, public NinjaTrap
 	public:
 	SuperTrap(std::string name);
 	SuperTrap(const SuperTrap& superTrap);
-	//void operator = (const SuperTrap& ori);
+	void operator = (const SuperTrap& ori);
 	~SuperTrap();
 
 	void print_test();
-	virtual void meleeAttack(std::string const &target);
-	virtual void rangedAttack(std::string const &target);
-	virtual void takeDamage(unsigned int);
-	virtual void beRepaired(unsigned int);
+	/*void meleeAttack(std::string const &target);
+	void rangedAttack(std::string const &target);
+	void takeDamage(unsigned int);
+	void beRepaired(unsigned int);*/
 };
 
 #endif

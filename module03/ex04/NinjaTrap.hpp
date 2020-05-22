@@ -10,7 +10,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class NinjaTrap: public ClapTrap
+class NinjaTrap: virtual public ClapTrap
 {
 	public:
 	NinjaTrap(std::string name);
