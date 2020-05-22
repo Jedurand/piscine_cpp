@@ -24,22 +24,21 @@ Squad::~Squad()
 
 Squad::Squad(const ISquad& squad)
 {
-//	_count = squad.getCount();
+	//_count = squad.getCount();
 	if (squad.getCount() == 0)
 		_squad = NULL;
 	for (int i = 0; i < squad.getCount(); i++)
 	{
-		push(squad.getUnit(i));
-	}	
+		push(squad.getUnit(i)->clone());
+	}
 }
 
-void Squad::operator = (const ISquad& squad)
+ISquad& Squad::operator = (const ISquad& squad)
 {
 	SquadList *squadB;
-
+	
 	if (_count > 0)
 	{
-		std::cout << "bonjour\n";
 		for (int i = 0; i < _count; i++)
 		{
 			squadB = _squad->next;
@@ -51,7 +50,9 @@ void Squad::operator = (const ISquad& squad)
 	_squad = NULL;
 	_count = 0;
 	for (int i = 0; i < squad.getCount(); i++)
-		push(squad.getUnit(i));
+		push(squad.getUnit(i)->clone());
+	return (*this);
+	//_count = squad.getCount();
 }
 
 int Squad::push(ISpaceMarine* spaceMarine)
@@ -87,7 +88,7 @@ int Squad::push(ISpaceMarine* spaceMarine)
 }
 
 int Squad::getCount() const
-{	
+{
 	return (_count);
 }
 
@@ -100,4 +101,3 @@ ISpaceMarine* Squad::getUnit(int n) const
 		squadB = squadB->next;
 	return (squadB->_marine);
 }
-

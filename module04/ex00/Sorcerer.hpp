@@ -8,7 +8,7 @@
 class Sorcerer
 {
 	public:
-	Sorcerer(std::string name = "Robert", std::string title = "Sorcerer");
+	Sorcerer(std::string name, std::string title);
 	~Sorcerer();
 	Sorcerer(const Sorcerer& sorcerer);
 	void operator = (const Sorcerer& sorcerer);
@@ -21,6 +21,6 @@ class Sorcerer
 	std::string _title;
 };
 
-std::ostream& operator << (std::ostream& out, const Sorcerer& sorcerer);   
+std::ostream& operator << (std::ostream& out, const Sorcerer& sorcerer);
 
 #endif

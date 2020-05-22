@@ -10,8 +10,8 @@ class MateriaSource: public IMateriaSource
 	public:
 	MateriaSource();
 	~MateriaSource();
-	MateriaSource(const MateriaSource& materiaSource);
-	void operator = (const MateriaSource& materiaSource);
+	MateriaSource(const IMateriaSource& materiaSource);
+	void operator = (const IMateriaSource& materiaSource);
 
 	void learnMateria(AMateria* m);
 	AMateria* createMateria(const std::string& ctype);

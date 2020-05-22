@@ -10,20 +10,20 @@ class Character: public ICharacter
 	public:
 	Character(std::string name = "Random");
 	~Character();
-	Character(const Character& character);
-	void operator = (const Character& character);
+	Character(const ICharacter& character);
+	void operator = (const ICharacter& character);
 
 	std::string getName() const;
 	void equip(AMateria* m);
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
-	
+
 	void deleteMaterias();
 	void init_materias();
 
 	private:
 	std::string _name;
-	AMateria* _m[4];
+	AMateria* 	_m[4];
 };
 
 #endif

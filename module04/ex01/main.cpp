@@ -7,7 +7,7 @@
 
 int main()
 {
-	std::cout << "------Weapons------\n";	
+	std::cout << "------Weapons------\n";
 	PlasmaRifle pr;
 	PowerFist pf;
 
@@ -24,11 +24,19 @@ int main()
 	std::cout << "\n-----Enemies-----\n";
 	SuperMutant *sp = new SuperMutant;
 	std::cout << sp->getType() << " " << sp->getHp() << std::endl;
-	sp->takeDamage(10);
-	
+	sp->takeDamage(1000);
+
 	RadScorpion *rs = new RadScorpion;
 	std::cout << rs->getType() << " " << rs->getHp() << std::endl;
 	rs->takeDamage(10);
+
+
+	delete sp;
+	delete rs;
+
+	std::cout << "\n\n-----\n\n";
+	sp = new SuperMutant;
+	rs = new RadScorpion;
 
 	std::cout << "\n----Player-----\n";
 	Character moi("moi");
@@ -48,11 +56,12 @@ int main()
 	moi.recoverAp();
 	moi.recoverAp();
 	moi.recoverAp();
+	moi.recoverAp();
 	moi.equip(&pf);
 	moi.attack(rs);
 	moi.attack(rs);
 	//moi.attack(rs);
 	//moi.attack(rs);
-	std::cout << moi; 
+	std::cout << moi;
 	std::cout << "\n-----Destruction time-----\n";
 }

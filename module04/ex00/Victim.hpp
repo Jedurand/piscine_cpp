@@ -9,7 +9,7 @@ class Victim
 {
 	public:
 	Victim(std::string name = "jean hubert");
-	~Victim();
+	virtual ~Victim();
 	Victim(const Victim& Victim);
 	void operator = (const Victim& victim);
 
@@ -20,6 +20,6 @@ class Victim
 	std::string _name;
 };
 
-std::ostream& operator << (std::ostream& out, const Victim& victim);   
+std::ostream& operator << (std::ostream& out, const Victim& victim);
 
 #endif

@@ -10,17 +10,29 @@ MateriaSource::~MateriaSource()
 	del_m();
 }
 
-MateriaSource::MateriaSource(const MateriaSource& materiaSource)
+MateriaSource::MateriaSource(const IMateriaSource& materiaSource)
 {
+	MateriaSource* materiaSource2 = (MateriaSource*)&materiaSource;
 	for (int i = 0; i < 4; i++)
-		_m[i] = materiaSource._m[i];
+	{
+		if (materiaSource2->_m[i] != 0)
+			_m[i] = materiaSource2->_m[i]->clone();
+		else
+			_m[i] = 0;
+	}
 }
 
-void MateriaSource::operator = (const MateriaSource& materiaSource)
+void MateriaSource::operator = (const IMateriaSource& materiaSource)
 {
 	del_m();
+	MateriaSource* materiaSource2 = (MateriaSource*)&materiaSource;
 	for (int i = 0; i < 4; i++)
-		_m[i] = materiaSource._m[i];
+	{
+		if (materiaSource2->_m[i] != 0)
+			_m[i] = materiaSource2->_m[i]->clone();
+		else
+			_m[i] = 0;
+	}
 }
 
 void MateriaSource::init_m()

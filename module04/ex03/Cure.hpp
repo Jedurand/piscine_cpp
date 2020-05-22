@@ -13,9 +13,8 @@ class Cure: public AMateria
 	Cure();
 	~Cure();
 	Cure(const Cure& cure);
-	void operator = (const Cure& cure);
 	void use(ICharacter& target);
-	Cure* clone() const;	
+	Cure* clone() const;
 
 	private:
 };

@@ -58,7 +58,7 @@ void Character::recoverAp()
 	_ap += 10;
 	if (_ap > 40)
 		_ap = 40;
-	std::cout << "Current AP after recovery: " << _ap << std::endl;
+	std::cout << _name << ": Current AP after recovery: " << _ap << std::endl;
 }
 
 void Character::attack(Enemy* enemy)
@@ -69,7 +69,7 @@ void Character::attack(Enemy* enemy)
 		return ;
 	if (_ap < 10)
 	{
-		std::cout << "Not enough ap\n";
+		std::cout <<_name << ": Not enough ap\n";
 		return ;
 	}
 	_ap -= 10;
@@ -88,7 +88,7 @@ std::string Character::carries() const
 	if (_weapon == NULL)
 		return ("is unarmed");
 	return ("carries " + _weapon->getName());
-}	
+}
 
 std::ostream& operator << (std::ostream& out, const Character& character)
 {

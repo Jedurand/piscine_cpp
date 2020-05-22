@@ -1,10 +1,11 @@
 #include "Sorcerer.hpp"
 #include "Victim.hpp"
 #include "Peon.hpp"
+#include "RandomDude.hpp"
 
 int main()
 {
-	Sorcerer rob;
+	/*Sorcerer rob;
 	Sorcerer henri(rob);
 	Sorcerer john = rob;
 	Victim v;
@@ -16,5 +17,15 @@ int main()
 	std::cout << rob;
 	std::cout << v << joe;
 	rob.polymorph(v);
-	rob.polymorph(joe);
+	rob.polymorph(joe);*/
+	Sorcerer robert("Robert", "the Magnificent");
+	Victim jim("Jimmy");
+	Peon joe("Joe");
+	std::cout << robert << jim << joe;
+	robert.polymorph(jim);
+	robert.polymorph(joe);
+
+	RandomDude random("'My name isn't Not important'");
+	std::cout << random;
+	robert.polymorph(random);
 }

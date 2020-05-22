@@ -11,20 +11,31 @@ Character::~Character()
 	deleteMaterias();
 }
 
-Character::Character(const Character& character)
+Character::Character(const ICharacter& character)
 {
 	_name = character.getName();
-	deleteMaterias();
+	Character *character2 = (Character*)&character;
 	for (int i = 0; i < 4; i++)
-		_m[i] = character._m[i];
+	{
+		if (character2->_m[i] != 0)
+			_m[i] = character2->_m[i]->clone();
+		else
+			_m[i] = 0;
+	}
 }
 
-void Character::operator = (const Character& character)
+void Character::operator = (const ICharacter& character)
 {
 	_name = character.getName();
+	Character *character2 = (Character*)&character;
 	deleteMaterias();
 	for (int i = 0; i < 4; i++)
-		_m[i] = character._m[i];	
+	{
+		if (character2->_m[i] != 0)
+			_m[i] = character2->_m[i]->clone();
+		else
+			_m[i] = 0;
+	}
 }
 
 void Character::deleteMaterias()
@@ -33,7 +44,7 @@ void Character::deleteMaterias()
 	{
 		if (_m[i] != 0)
 			delete(_m[i]);
-	}	
+	}
 }
 
 void Character::init_materias()
@@ -71,7 +82,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (_m[idx] == 0)
+	if (idx < 0 || idx > 3 || _m[idx] == 0)
 		return ;
 	_m[idx]->use(target);
 }

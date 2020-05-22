@@ -2,7 +2,7 @@
 
 Ice::Ice(): AMateria("ice")
 {
-	std::cout << "Ice created\n";	
+	std::cout << "Ice created\n";
 }
 
 Ice::~Ice()
@@ -15,11 +15,6 @@ Ice::Ice(const Ice& ice): AMateria(ice)
 // inside AMateria(check type and return;
 }
 
-void Ice::operator = (const Ice& ice)
-{
-	
-}
-
 void Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
@@ -29,7 +24,6 @@ void Ice::use(ICharacter& target)
 Ice* Ice::clone() const
 {
 	Ice *ice = new Ice;
+	*ice = *this;
 	return (ice);
 }
-	
-

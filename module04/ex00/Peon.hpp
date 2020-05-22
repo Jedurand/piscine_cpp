@@ -9,7 +9,7 @@ class Peon: public Victim
 {
 	public:
 	Peon(std::string name = "richard");
-	~Peon();
+	virtual ~Peon();
 	Peon(const Peon& peon);
 	void operator = (const Peon& peon);
 

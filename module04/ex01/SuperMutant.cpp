@@ -20,17 +20,11 @@ void SuperMutant::operator = (const SuperMutant& superMutant)
 	takeDamage(173 - superMutant.getHp());
 	std::cout << "Gaaaah. Break everything!\n";
 }
-/*
-void SuperMutant::takeDamage(int damage)
-{
-	if (getHp()  - (damage - 3) <= 0)
-		_hp = 0;
-	else
-		_hp -= (damage - 3);
-	std::cout << _type << " takes " << damage - 3 << ". Remaining hp: " << _hp << std::endl;
-} */
 
 void SuperMutant::takeDamage(int damage)
 {
-	Enemy::takeDamage(damage - 3);
+	if (damage - 3 >= 0)
+		Enemy::takeDamage(damage - 3);
+	else
+		Enemy::takeDamage(0);
 }

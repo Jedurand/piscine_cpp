@@ -7,7 +7,7 @@
 class  AWeapon
 {
 	public:
-	AWeapon(const std::string& name = "club", int apcost = 5, int damage = 5);
+	AWeapon(const std::string& name, int apcost, int damage);
 	virtual ~AWeapon();
 	AWeapon(const AWeapon& aWeapon);
 	void operator = (const AWeapon& aWeapon);

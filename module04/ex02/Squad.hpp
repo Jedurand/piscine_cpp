@@ -5,29 +5,29 @@
 #include <string>
 #include "ISquad.hpp"
 
-class SquadList
-{
-	public:
-	ISpaceMarine *_marine;
-	SquadList *next;
-	int _n;
-};
-
 class Squad: public ISquad
 {
+	class SquadList
+	{
+		public:
+		ISpaceMarine *_marine;
+		SquadList *next;
+		int _n;
+	};
+	
 	public:
 	Squad();
 	~Squad();
 	Squad(const ISquad& squad);
-	void operator = (const ISquad& squad);
+	ISquad& operator = (const ISquad& squad);
 
 	int getCount() const;
 	ISpaceMarine* getUnit(int n) const;
 	int push(ISpaceMarine* spaceMarine);
 
 	private:
-	int _count;
-	SquadList *_squad;
+	int 		_count;
+	SquadList 	*_squad;
 };
 
 #endif
