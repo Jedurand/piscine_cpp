@@ -69,6 +69,7 @@ void ClapTrap::takeDamage(unsigned int ammount)
 	damage = ammount - _damageReduction;
 	if (damage < 0)
 		damage = 0;
+	std::cout << _name << " is taking " << damage << " damages ||| ";
 	if (damage <= _hitPoints)
 		_hitPoints -= damage;
 	else
@@ -78,6 +79,7 @@ void ClapTrap::takeDamage(unsigned int ammount)
 
 void ClapTrap::beRepaired(unsigned int ammount)
 {
+	std::cout << _name << " is healing himself for " << ammount << " hp ||| ";
 	if (ammount + _hitPoints <= _maxHitPoints)
 		_hitPoints += ammount;
 	else

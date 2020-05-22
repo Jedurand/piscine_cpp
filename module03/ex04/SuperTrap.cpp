@@ -5,9 +5,7 @@ SuperTrap::SuperTrap(std::string name): ClapTrap(name, 100, 100, 120, 120, 1, 60
 	std::cout << "SuperTrap constructor called\n";
 }
 
-SuperTrap::SuperTrap(const SuperTrap& superTrap): ClapTrap(superTrap._name, superTrap._hitPoints,
-superTrap._maxHitPoints, superTrap._energyPoints, superTrap._maxEnergyPoints, superTrap._level,
-superTrap._meleeDamage, superTrap._rangedDamage, superTrap._damageReduction),
+SuperTrap::SuperTrap(const SuperTrap& superTrap): ClapTrap(superTrap),
 FragTrap(superTrap), NinjaTrap(superTrap)
 {
 	std::cout << "SuperTrap copy constructor called\n";

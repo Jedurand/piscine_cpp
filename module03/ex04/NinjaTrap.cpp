@@ -36,7 +36,7 @@ void NinjaTrap::operator = (const NinjaTrap& ori)
 void NinjaTrap::ninjaShoebox(FragTrap& clapTrap)
 {
 	unsigned int damage = _rangedDamage * 5 + (_level * 10);
-	std::cout << _name + " lance SHURIKEN TO THE CHEST et fait " << damage <<
+	std::cout << _name + " lance RAAASENGAN et fait " << damage <<
 	"degats a sa cible" << std::endl;
 	clapTrap.takeDamage(damage);
 }
@@ -45,8 +45,7 @@ void NinjaTrap::ninjaShoebox(ScavTrap& clapTrap)
 {
 	unsigned int damage = _meleeDamage * 1 + (_level * 10);
 	clapTrap.challengeNewcomer();
-	std::cout << _name + " se fait passer pour un ami et poignarde sa cible " +
-	" dans le dos pour " << damage <<  "degats\n";
+	std::cout << _name + " utilise la technique du hokuto a pain et fait " << damage <<  "degats\n";
 	clapTrap.takeDamage(damage);
 }
 

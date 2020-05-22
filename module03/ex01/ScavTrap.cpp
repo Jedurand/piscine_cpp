@@ -85,17 +85,17 @@ void ScavTrap::beRepaired(unsigned int ammount)
 
 std::string ScavTrap::randomizeChallenge()
 {
-	int				seed;
+	int		seed;
 
 	seed = std::rand() % (6 - 1) + 1;
 	if (seed == 1)
-		return ("NIIIQUUE TA MEEERE");
+		return ("Je vais te mouliner !!");
 	if (seed == 2)
 		return ("I'm 42 parrallels universes ahead of you");
 	if (seed == 3)
-		return ("COMPILATION ERROR");
+		return ("SEEEEG FFAUUUUULT");
 	if (seed == 4)
-		return ("HAHAHAHHA");
+		return ("Machiavelic_laugh_.exe");
 	if (seed == 5)
 		return ("HELLO GENTLEMEN, THIS IS MAMBO NUMBER 5");
 	else

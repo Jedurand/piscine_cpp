@@ -47,10 +47,12 @@ int main()
 	su.print_test();
 	su.takeDamage(25);
 	SuperTrap su2(su);
+	su2.print_test();
 	su2.takeDamage(25);
 
 	SuperTrap su3("roger");
 	su3 = su2;
+	su3.print_test();
 	su3.takeDamage(25);
 	su3.beRepaired(1000);
 
