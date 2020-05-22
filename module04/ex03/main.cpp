@@ -70,30 +70,36 @@ int main()
 	moi->unequip(12);
 
 	std::cout << "jimbo\n";
-	ICharacter* jimbo = new Character(*jim);
-	*jimbo = *moi;
-	jimbo->use(0, *bob);
-	jimbo->use(1, *bob);
-	jimbo->use(2, *bob);
-	jimbo->use(3, *bob);
-	jimbo->use(4, *bob);
+	Character jimbo("Jimbo");
+	jimbo.equip(src->createMateria("ice"));
+	jimbo.equip(src->createMateria("ice"));
+	jimbo.equip(src->createMateria("ice"));
+	jimbo.equip(src->createMateria("ice"));
+
+	jimbo = *moi;
+	jimbo.use(0, *bob);
+	jimbo.use(1, *bob);
+	jimbo.use(2, *bob);
+	jimbo.use(3, *bob);
+	jimbo.use(4, *bob);
 
 	std::cout << "src: ";
 	IMateriaSource* src2 = new MateriaSource(*src);
 	src2->learnMateria(new Cure());
 	src2->learnMateria(new Cure());
 
-	IMateriaSource* src3 = new MateriaSource(*src);
-	*src3 = *src2;
-	src3->createMateria("cure")->use(*bob);
+	MateriaSource src3;
+	src3.learnMateria(new Cure());
+	src3.learnMateria(new Cure());
+	src3 = *src2;
+	src3.createMateria("cure")->use(*bob);
 
 	delete bob;
 	delete moi;
 	delete jim;
-	delete jimbo;
 	delete src;
 	delete src2;
-	delete src3;
+
 	while (1);
 	return 0;
 }
