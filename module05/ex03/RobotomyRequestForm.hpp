@@ -14,11 +14,12 @@ class RobotomyRequestForm: public Form
 	RobotomyRequestForm(const RobotomyRequestForm& sobotomyRequestForm);
 	void operator = (const RobotomyRequestForm& sobotomyRequestForm);
 
-	void execute(const Bureaucrat& executor) const;	
+	void execute(const Bureaucrat& executor) const;
 
 	private:
 	std::string _target;
 	std::string _noise;
+	RobotomyRequestForm();
 };
 
 #endif

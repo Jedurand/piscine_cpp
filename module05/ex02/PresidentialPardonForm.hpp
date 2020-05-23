@@ -14,10 +14,11 @@ class PresidentialPardonForm: public Form
 	PresidentialPardonForm(const PresidentialPardonForm& presidentialPardonForm);
 	void operator = (const PresidentialPardonForm& presidentialPardonForm);
 
-	void execute(const Bureaucrat& executor) const;	
+	void execute(const Bureaucrat& executor) const;
 
 	private:
 	std::string _target;
+	PresidentialPardonForm();
 };
 
 #endif

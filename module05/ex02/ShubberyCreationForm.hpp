@@ -14,11 +14,12 @@ class ShubberyCreationForm: public Form
 	ShubberyCreationForm(const ShubberyCreationForm& shubberyCreationForm);
 	void operator = (const ShubberyCreationForm& shubberyCreationForm);
 
-	void execute(const Bureaucrat& executor) const;	
+	void execute(const Bureaucrat& executor) const;
 
 	private:
 	std::string _target;
 	std::string _tree;
+	ShubberyCreationForm();
 };
 
 #endif
