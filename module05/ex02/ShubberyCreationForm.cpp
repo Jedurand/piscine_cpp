@@ -27,6 +27,8 @@ void ShubberyCreationForm::execute(const Bureaucrat& executor) const
 	if (!Form::check(executor))
 		return ;
 	std::ofstream file(_target + "_shubbery");
+	if (!file)
+		return ;
 	file << _tree;
 	file.close();
 }
