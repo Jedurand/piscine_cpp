@@ -18,11 +18,12 @@ class AMateria
 	const std::string& getType() const;
 	unsigned int getXp() const;
 	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target); 
+	virtual void use(ICharacter& target);
 
 	private:
 	unsigned int _xp;
 	std::string _type;
+	AMateria();
 };
 
 #endif
