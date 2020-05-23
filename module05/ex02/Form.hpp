@@ -11,29 +11,29 @@ class Form
 {
 	class GradeTooHighException;
 	class GradeTooLowException;
-	class SignedException;
+	class AlreadySignedException;
 
 	public:
-	Form(std::string name = "Generic", unsigned int grade_toSign = 100, unsigned int grade_toExe = 50);
+	Form(std::string name = "Generic", int grade_toSign = 100, int grade_toExe = 50);
 	virtual ~Form();
 	Form(const Form& form);
 	void operator = (const Form& form);
-	
+
 	//getters
 	std::string getName() const;
-	unsigned int getGradeToSign() const;
-	unsigned int getGradeToExe() const;
+	int getGradeToSign() const;
+	int getGradeToExe() const;
+
 	bool isSigned() const;
-	void beSigned(Bureaucrat& bureaucrat);
-	
+	void beSigned(const Bureaucrat& bureaucrat);
 	virtual void execute(const Bureaucrat& executor) const = 0;
 	bool check(const Bureaucrat& executor) const;
 
 	private:
-	std::string _name;
-	bool         _signed;
-	unsigned int _grade_toSign;
-	unsigned int _grade_toExe;
+	const std::string 	_name;
+	bool        		_signed;
+	const int 			_grade_toSign;
+	const int 			_grade_toExe;
 
 	class GradeTooHighException: public std::exception
 	{
@@ -56,7 +56,18 @@ class Form
 		private:
 		static const std::string _error;
 	};
-	
+
+	class AlreadySignedException: public std::exception
+	{
+		public:
+		AlreadySignedException() throw();
+		~AlreadySignedException() throw();
+		virtual const char* what() const throw();
+
+		private:
+		static const std::string _error;
+	};
+
 	class SignedException: public std::exception
 	{
 		public:

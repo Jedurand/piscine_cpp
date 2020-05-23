@@ -14,23 +14,23 @@ class Form
 	class AlreadySignedException;
 
 	public:
-	Form(std::string name = "Generic", unsigned int grade_toSign = 100, unsigned int grade_toExe = 50);
-	~Form();
+	Form(std::string name = "Generic", int grade_toSign = 100, int grade_toExe = 50);
+	virtual ~Form();
 	Form(const Form& form);
 	void operator = (const Form& form);
-	
+
 	//getters
 	std::string getName() const;
-	unsigned int getGradeToSign() const;
-	unsigned int getGradeToExe() const;
+	int getGradeToSign() const;
+	int getGradeToExe() const;
 	bool isSigned();
 	void beSigned(const Bureaucrat& bureaucrat);
 
 	private:
-	std::string _name;
-	bool         _signed;
-	unsigned int _grade_toSign;
-	unsigned int _grade_toExe;
+	const std::string 	_name;
+	bool        		_signed;
+	const int 			_grade_toSign;
+	const int 			_grade_toExe;
 
 	class GradeTooHighException: public std::exception
 	{
@@ -53,7 +53,7 @@ class Form
 		private:
 		static const std::string _error;
 	};
-	
+
 	class AlreadySignedException: public std::exception
 	{
 		public:

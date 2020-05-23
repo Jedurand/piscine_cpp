@@ -13,11 +13,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& robotomyRequestForm): Form(robotomyRequestForm)
 {
 	_target = robotomyRequestForm._target;
+	_noise = robotomyRequestForm._noise;
 }
 
 void RobotomyRequestForm::operator = (const RobotomyRequestForm& robotomyRequestForm)
 {
 	_target = robotomyRequestForm._target;
+	_noise = robotomyRequestForm._noise;
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const

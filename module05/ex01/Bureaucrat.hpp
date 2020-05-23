@@ -13,23 +13,24 @@ class Bureaucrat
 	class GradeTooLowException;
 
 	public:
-	Bureaucrat(std::string name = "GrattePapier", unsigned int grade = 75);
+	Bureaucrat(std::string name, unsigned int grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat& bureaucrat);
 	void operator = (const Bureaucrat& bureaucrat);
-	
+
 	//getters
-	std::string getName() const;
-	unsigned int getGrade() const;
+	const std::string getName() const;
+	int getGrade() const;
 
 	void promote();
 	void relegate();
-	
+
 	void signForm(Form& form);
 
 	private:
-	std::string _name;
-	unsigned int _grade;
+	const std::string 	_name;
+	int 				_grade;
+	Bureaucrat();
 
 	class GradeTooHighException: public std::exception
 	{

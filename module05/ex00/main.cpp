@@ -6,17 +6,34 @@ int main()
 	Bureaucrat* richard = new Bureaucrat(*jean);
 
 	std::cout << jean->getName() << " " << jean->getGrade() << std::endl;
-	std::cout << *jean;
+	std::cout << *jean << std::endl;
 
-	Bureaucrat* canape = new Bureaucrat("tricheur", 0);
-	Bureaucrat* low = new Bureaucrat("low", 151);
+	Bureaucrat canape("Promotion canape", 1);
+	Bureaucrat low("Stagiaire", 150);
+	std::cout << canape << std::endl;
+	std::cout << low << std::endl;
 
-	std::cout << canape->getName() << canape->getGrade() << std::endl; 	
-	std::cout << low->getName() << low->getGrade() << std::endl; 	
-	std::cout << *low;
+	std::cout << "\nPromotion time\n";
+	jean->promote();
+	std::cout << *jean << std::endl;
+	jean->relegate();
+	std::cout << *jean << std::endl;
+
+	canape.promote();
+	std::cout << canape << std::endl;
+	low.relegate();
+	std::cout << low << std::endl;
+
+	low = canape;
+	std::cout << "low = canape: " << low << std::endl; 
+
+	Bureaucrat high("Tricheur", 0);
+	(void)high;
+	Bureaucrat low1("Rebut", 151);
+	(void)low1;
 
 	delete jean;
 	delete richard;
-	delete canape;
-	delete low;
+	//delete canape;
+//	delete low;
 }

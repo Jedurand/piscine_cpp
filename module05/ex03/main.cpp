@@ -10,7 +10,7 @@ int main()
 	Bureaucrat* richard = new Bureaucrat("richard", 140);
 	Bureaucrat* b1 = new Bureaucrat("b1", 101);
 
-	std::cout << jean->getName() << " " << jean->getGrade() << std::endl;
+/*	std::cout << jean->getName() << " " << jean->getGrade() << std::endl;
 	std::cout << *jean;
 
 	Bureaucrat* canape = new Bureaucrat("tricheur", 0);
@@ -19,7 +19,7 @@ int main()
 	std::cout << canape->getName() << canape->getGrade() << std::endl;
 	std::cout << low->getName() << low->getGrade() << std::endl;
 	std::cout << *low;
-
+*/
 /*	std::cout << "--------Forms---------\n";
 
 	Form* z4b = new Form("z4b");
@@ -34,80 +34,47 @@ int main()
  	std::cout << z4b->isSigned() << std::endl;
 */
 
-	std::cout << "--------Other forms------\n";
+	std::cout << "--------Intern check-----\n";
+	Intern stagiaire;
 	Bureaucrat* admin = new Bureaucrat("super user", 1);
 	Bureaucrat* lol = new Bureaucrat("almost", 46);
 
-	ShubberyCreationForm* hub = new ShubberyCreationForm("tree");
+	Form* hub = stagiaire.makeForm("shuberry creation", "tree");
 	hub->execute(*jean);
 	jean->signForm(*hub);
 	hub->execute(*jean);
 	hub->execute(*richard);
 
-	PresidentialPardonForm pp("Gratos");
-	pp.execute(*jean);
-	pp.execute(*admin);
-	pp.beSigned(*admin);
-	pp.execute(*admin);
+	Form* pp = stagiaire.makeForm("presidential pardon", "Gratos");
+	pp->execute(*jean);
+	pp->execute(*admin);
+	pp->beSigned(*admin);
+	pp->execute(*admin);
 
-	admin->executeForm(pp);
-	jean->executeForm(pp);
+	admin->executeForm(*pp);
+	jean->executeForm(*pp);
 
-	RobotomyRequestForm rf("Bender");
-	admin->executeForm(rf);
-	admin->signForm(rf);
-	admin->executeForm(rf);
-	jean->executeForm(rf);
-	b1->signForm(rf);
-	b1->executeForm(rf);
+	Form *rf = stagiaire.makeForm("robotomy request", "Bender");
+	admin->executeForm(*rf);
+	admin->signForm(*rf);
+	admin->executeForm(*rf);
+	jean->executeForm(*rf);
+	b1->signForm(*rf);
+	b1->executeForm(*rf);
 
-	lol->executeForm(rf);
+	lol->executeForm(*rf);
 	lol->promote();
-	lol->executeForm(rf);
+	lol->executeForm(*rf);
 
-	std::cout << "\n\n---------TEsting the Intern---------\n\n";
-	Intern intern;
+	Form *rf_nul = stagiaire.makeForm("robotomyrequest", "Bender");
+	(void)rf_nul;
 
-	Form* shuberry = intern.makeForm("shuberry creation", "tree_test");
-	Form* robotomy = intern.makeForm("robotomy request", "bender");
-	Form*  pardon = intern.makeForm("presidential pardon", "gratos");
-
-	Intern intern2(intern);
-	Intern intern3 = intern;
-
-	Form* pardon2 = intern3.makeForm("presidential pardon", "henrichard le cirminel");
-	Form* pardon3 = intern2.makeForm("presidential pardon", "lolloooo");
-
-	admin->executeForm(*shuberry);
-	admin->signForm(*shuberry);
-	admin->executeForm(*shuberry);
-	jean->executeForm(*robotomy);
-	b1->signForm(*robotomy);
-	b1->executeForm(*robotomy);
-
-	lol->executeForm(*pardon);
-	lol->promote();
-
-	admin->signForm(*pardon);
-	admin->signForm(*pardon2);
-	admin->signForm(*pardon3);
-	admin->executeForm(*pardon);
-	admin->executeForm(*pardon2);
-	admin->executeForm(*pardon3);
-
-
-
-	std::cout << "\n\n--------Plan social--------\n\n";
 	delete jean;
 	delete richard;
-	delete canape;
-	delete low;
-
+	delete admin;
+	delete lol;
+	delete pp;
 	delete hub;
+	delete rf;
 
-	delete shuberry;
-	delete robotomy;
-	delete pardon;
-	delete pardon2;
-	delete pardon3;
 }

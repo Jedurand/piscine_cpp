@@ -13,11 +13,13 @@ ShubberyCreationForm::~ShubberyCreationForm()
 ShubberyCreationForm::ShubberyCreationForm(const ShubberyCreationForm& shubberyCreationForm): Form(shubberyCreationForm)
 {
 	_target = shubberyCreationForm._target;
+	_tree = shubberyCreationForm._tree;
 }
 
 void ShubberyCreationForm::operator = (const ShubberyCreationForm& shubberyCreationForm)
 {
 	_target = shubberyCreationForm._target;
+	_tree = shubberyCreationForm._tree;
 }
 
 void ShubberyCreationForm::execute(const Bureaucrat& executor) const
