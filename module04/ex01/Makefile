@@ -2,7 +2,8 @@
 NAME		= a.out
 
 SRCS	=	AWeapon.cpp Character.cpp Enemy.cpp PlasmaRifle.cpp \
- 			PowerFist.cpp RadScorpion.cpp SuperMutant.cpp main.cpp
+ 			PowerFist.cpp RadScorpion.cpp SuperMutant.cpp Fish.cpp \
+			Chainsword.cpp main.cpp
 
 CC		=	clang++
 

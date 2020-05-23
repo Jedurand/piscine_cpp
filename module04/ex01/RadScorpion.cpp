@@ -14,10 +14,3 @@ RadScorpion::RadScorpion(const RadScorpion& radScorpion): Enemy(radScorpion)
 {
 	std::cout << "* click click click *\n";
 }
-
-void RadScorpion::operator = (const RadScorpion& radScorpion)
-{
-	takeDamage(80 - radScorpion.getHp());
-	std::cout << "* click click click *\n";
-}
-

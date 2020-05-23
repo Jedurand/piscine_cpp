@@ -2,12 +2,12 @@
 
 Cure::Cure(): AMateria("cure")
 {
-	std::cout << "Cure created\n";
+	//std::cout << "Cure created\n";
 }
 
 Cure::~Cure()
 {
-	std::cout << "Cure destroyed\n";
+	//std::cout << "Cure destroyed\n";
 }
 
 Cure::Cure(const Cure& cure): AMateria(cure)

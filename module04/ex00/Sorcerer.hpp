@@ -19,6 +19,7 @@ class Sorcerer
 	private:
 	std::string _name;
 	std::string _title;
+	Sorcerer();
 };
 
 std::ostream& operator << (std::ostream& out, const Sorcerer& sorcerer);

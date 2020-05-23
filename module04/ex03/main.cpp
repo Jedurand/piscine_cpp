@@ -100,6 +100,5 @@ int main()
 	delete src;
 	delete src2;
 
-	while (1);
 	return 0;
 }

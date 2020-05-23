@@ -28,4 +28,22 @@ int main()
 	RandomDude random("'My name isn't Not important'");
 	std::cout << random;
 	robert.polymorph(random);
+
+	std::cout << "\n\nTest constructors\n\n";
+	Sorcerer richard(robert);
+	Sorcerer harry("harry", "The pot of butter");
+	std::cout << richard << std::endl;
+	richard.polymorph(jim);
+	std::cout << harry << std::endl;
+	harry = robert;
+	std::cout << harry << std::endl;
+
+	Victim joe2(jim);
+	Victim joe3("lol");
+	joe3 = joe2;
+
+	Peon p2(joe);
+	Peon p3("lol");
+	p3 = p2;
+
 }

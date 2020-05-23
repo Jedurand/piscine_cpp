@@ -15,12 +15,6 @@ SuperMutant::SuperMutant(const SuperMutant& superMutant): Enemy(superMutant)
 	std::cout << "Gaaaah. Break everything!\n";
 }
 
-void SuperMutant::operator = (const SuperMutant& superMutant)
-{
-	takeDamage(173 - superMutant.getHp());
-	std::cout << "Gaaaah. Break everything!\n";
-}
-
 void SuperMutant::takeDamage(int damage)
 {
 	if (damage - 3 >= 0)

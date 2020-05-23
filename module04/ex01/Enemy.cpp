@@ -21,7 +21,7 @@ Enemy::Enemy(const Enemy& enemy)
 
 void Enemy::operator = (const Enemy& enemy)
 {
-	std::cout << "Enemy duplicated\n";
+	std::cout << enemy._type << " duplicated\n";
 	_type = enemy._type;
 	_hp = enemy._hp;
 

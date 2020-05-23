@@ -2,12 +2,12 @@
 
 Ice::Ice(): AMateria("ice")
 {
-	std::cout << "Ice created\n";
+	//std::cout << "Ice created\n";
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice destroyed\n";
+	//std::cout << "Ice destroyed\n";
 }
 
 Ice::Ice(const Ice& ice): AMateria(ice)

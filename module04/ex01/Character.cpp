@@ -17,14 +17,14 @@ Character::Character(const Character& character)
 {
 	_name = character._name;
 	_weapon = character._weapon;
-	_ap = 40;
+	_ap = character._ap;
 }
 
 void Character::operator = (const Character& character)
 {
 	_name = character._name;
 	_weapon = character._weapon;
-	_ap = 40;
+	_ap = character._ap;
 }
 
 std::string Character::getName() const
@@ -66,7 +66,10 @@ void Character::attack(Enemy* enemy)
 	if (enemy == NULL || _weapon == NULL)
 		return ;
 	if (enemy->getHp() <= 0)
+	{
+		std::cout << enemy->getType() << " is already dead" << std::endl;
 		return ;
+	}
 	if (_ap < 10)
 	{
 		std::cout <<_name << ": Not enough ap\n";
@@ -76,11 +79,6 @@ void Character::attack(Enemy* enemy)
 	std::cout << _name << " attack " << enemy->getType() << " with " <<
 	_weapon->getName() << std::endl;
 	enemy->takeDamage(_weapon->getDamage());
-	if (enemy->getHp() <= 0)
-	{
-		delete(enemy);
-		enemy = NULL;
-	}
 }
 
 std::string Character::carries() const

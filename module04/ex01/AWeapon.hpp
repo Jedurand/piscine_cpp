@@ -21,5 +21,6 @@ class  AWeapon
 	std::string _name;
 	int _apcost;
 	int _damage;
+	AWeapon();
 };
 #endif
