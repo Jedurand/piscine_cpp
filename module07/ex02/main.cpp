@@ -6,7 +6,7 @@ int main()
 	array1[2] = 12;
 	std::cout << array1[2] << std::endl;
 //	std::cout << array1[12];
-	
+
 	Array <std::string>array2(4);
 	array2[0] = "bonjour";
 	array2[1] = "lol";
@@ -18,6 +18,16 @@ int main()
 	array2[2] = "NONONO";
 	std::cout << array2[2] << std::endl;
 
+	const Array <int>iconst(4);
+	std::cout << "ici " << iconst[0] << std::endl;
+	//iconst[1] = 12;
+	//iconst[3] = 12;
+	//const int iconstm = 24;
+	//iconst[3] = 3;
+	/*std::cout << "ici " << iconst[3] << std::endl;
+	iconst[3] = 12;
+	std::cout << "ici " << iconst[3] << std::endl;
+	std::cout << "ici " << iconstm  << std::endl;*/
 
 	// copy
 	Array <int>copy = array1;
@@ -33,13 +43,12 @@ int main()
 
 	copy = array1;
 
-	while(1);
 
 	// test foireux
 //	Array copy3(array2);
 
 //	Array <char>arrayVoid;
-//	std::cout << arrayVoid[0];	
-	
-	//array2[4] = "segfault";	
+//	std::cout << arrayVoid[0];
+
+	//array2[4] = "segfault";
 }

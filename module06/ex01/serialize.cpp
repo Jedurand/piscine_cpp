@@ -1,6 +1,8 @@
 #include <iostream>
 #include <climits>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 struct Data { std::string s1; int n; std::string s2; };
 

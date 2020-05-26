@@ -2,7 +2,8 @@
 #include <string>
 #include <climits>
 #include <limits>
-#include <math.h>
+#include <math>
+#include <cstdio>
 
 void is_char(char& c)
 {
