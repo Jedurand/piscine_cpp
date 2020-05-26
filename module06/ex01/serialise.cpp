@@ -9,7 +9,6 @@ static char rand_alpha()
 	char rand;
 
 	rand = std::rand() % 3;
-	std::cout << (int)rand << std::endl;
 	if (rand == 0)
 		return (std::rand() % (57 - 48) + 48);
 	else if (rand == 1)
@@ -32,11 +31,9 @@ void *serialize(void)
 			rand = std::rand() % (255 - 0) + 0;
 		else
 			rand = rand_alpha();
-		std::cout << (int)rand << std::endl;
 		memset(&p[i], rand, 1);
 		i++;
 	}
-	//std::cout << p << std::endl;
 	return (reinterpret_cast<void*>(p));
 }
 
@@ -48,7 +45,6 @@ Data *deserialize(void *raw)
 
 
 	p = reinterpret_cast<unsigned char*>(raw);
-	//data = reinterpret_cast<Data*>(raw);
 
 	memcpy(&s, p, 8 * sizeof(char));
 	s[8] = 0;
@@ -68,5 +64,6 @@ int main()
 	Data *data = deserialize(p);
 
 	std::cout << data->s1 << " " << data->n << " " << data->s2 << std::endl;
-//	delete p;
+	delete reinterpret_cast<unsigned char*>(p);
+	delete data;
 }
