@@ -13,10 +13,10 @@
 void is_char(char& c)
 {
 	std::cout << "Double: " << static_cast<double>(c) <<std::endl;
-	
+
 	std::cout << "Float: ";
 	std::cout << static_cast<float>(c) << "f" << std::endl;
-	
+
 	std::cout << "Int: " << static_cast<int>(c) << std::endl;
 
 	std::cout << "Char: ";
@@ -26,23 +26,23 @@ void is_char(char& c)
 void is_double(double& d)
 {
 	int i = static_cast<int>(d);
-	
-	std::cout << d << " is a double\n";
+
+//	std::cout << d << " is a double\n";
 	std::cout << "Double: " << d;
 	if (d - static_cast<double>(i) == 0)
 		std::cout << ".0";
 	std::cout << std::endl;
 
 	std::cout << "Float: ";
-	if ((d < std::numeric_limits<float>::min() || d > std::numeric_limits<float>::max()) && d != inf)
-		std::cout << "Impossible\n";
-	else
-	{
+//	if (d > std::numeric_limits<float>::max()) //&& d != std::inf)
+//		std::cout << "Impossible\n";
+//	else
+//	{
 		std::cout << static_cast<float>(d);
 		if (d - static_cast<double>(i) == 0)
 			std::cout << ".0";
 		std::cout << "f\n";
-	}
+//	}
 
 	std::cout << "Int: ";
 	if (!(d < static_cast<double>(INT_MIN) || d > static_cast<double>(INT_MAX)))
@@ -66,14 +66,14 @@ void is_float(float& f)
 */
 int main(int ac, char **av)
 {
-	int	i;
+//	int	i;
 	char	c;
-	float	f;
+//	float	f;
 	double	d;
-	
+
 	if (ac != 2)
 		return (1);
-	
+
 	if (sscanf(av[1], "%lf", &d) == 1)
 		is_double(d);
 //	else if (sscanf(av[1], "%f", &f) == 1)
@@ -82,6 +82,7 @@ int main(int ac, char **av)
 //		is_int(i);
 	else if (sscanf(av[1], "%c", &c) == 1)
 		is_char(c);
-	
+//	std::cout << std::numeric_limits<float>::min() << " " << std::numeric_limits<float>::max() << std::endl;
+
 	return (0);
 }

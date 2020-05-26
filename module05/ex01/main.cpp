@@ -44,9 +44,9 @@ int main()
 	low.signForm(*f2);
 
 	std::cout << *z4b << std::endl;
- 	std::cout << z4b->isSigned() << std::endl;
+ 	//std::cout << z4b->isSigned() << std::endl;
 
-	//Form* nul = new Form("nul", 155, -1);
+	//Form* nul = new Form("nul", 130, -1);
 	//(void)nul;
 //	Form* nul2 = new Form("nul", 155, 2);
 //	 (void)nul2;

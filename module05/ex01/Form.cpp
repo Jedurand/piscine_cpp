@@ -126,6 +126,6 @@ void Form::execute(const Bureaucrat& executor) const
 std::ostream& operator << (std::ostream& out, Form& form)
 {
 	out << form.getName() << " form grade to sign: " << form.getGradeToSign()
-	<< " grade to exe: " << form.getGradeToExe();
+	<< " grade to exe: " << form.getGradeToExe() << " |is signed: " << form.isSigned();
 	return (out);
 }
