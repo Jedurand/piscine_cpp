@@ -1,5 +1,5 @@
-#ifndef CLASSES_HPP
-#define CLASSES_HPP
+#ifndef BASE_HPP
+#define BASE_HPP
 
 #include <iostream>
 #include <string>

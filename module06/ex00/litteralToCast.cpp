@@ -50,9 +50,7 @@ void is_double(double& d)
 
 int main(int ac, char **av)
 {
-//	int	i;
 	char	c;
-//	float	f;
 	double	d;
 
 	if (ac != 2)

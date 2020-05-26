@@ -4,6 +4,32 @@
 
 struct Data { std::string s1; int n; std::string s2; };
 
+static void	*ft_memset(void *dest, unsigned char c, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	pc;
+
+	d = reinterpret_cast<unsigned char*>(dest);
+	pc = c;
+	while (n--)
+	{
+		*d++ = pc;
+	}
+	return (dest);
+}
+
+static void	*ft_memcpy(void *dest, void *src, size_t n)
+{
+	unsigned char		*d;
+	unsigned char	*s;
+
+	d = reinterpret_cast<unsigned char*>(dest);
+	s = reinterpret_cast<unsigned char *>(src);
+	while (n--)
+		*d++ = *s++;
+	return (dest);
+}
+
 static char rand_alpha()
 {
 	char rand;
@@ -31,7 +57,7 @@ void *serialize(void)
 			rand = std::rand() % (255 - 0) + 0;
 		else
 			rand = rand_alpha();
-		memset(&p[i], rand, 1);
+		ft_memset(&p[i], rand, 1);
 		i++;
 	}
 	return (reinterpret_cast<void*>(p));
@@ -46,13 +72,13 @@ Data *deserialize(void *raw)
 
 	p = reinterpret_cast<unsigned char*>(raw);
 
-	memcpy(&s, p, 8 * sizeof(char));
+	ft_memcpy(&s, p, 8 * sizeof(char));
 	s[8] = 0;
 	data->s1 = std::string(s);
-	memcpy(&s, &p[8 * sizeof(char) + sizeof(int)], 8 * sizeof(char));
+	ft_memcpy(&s, &p[8 * sizeof(char) + sizeof(int)], 8 * sizeof(char));
 	s[8] = 0;
 	data->s2 = std::string(s);
-	memcpy(&data->n, &p[8 * sizeof(char)], sizeof(int));
+	ft_memcpy(&data->n, &p[8 * sizeof(char)], sizeof(int));
 
 	return (data);
 }

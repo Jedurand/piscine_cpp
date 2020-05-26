@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Classes.hpp"
+#include "Base.hpp"
 
 void iddentify_from_pointer(Base *p)
 {
@@ -20,6 +20,7 @@ void iddentify_from_reference(Base& p)
 	try
 	{
 		A& ra = dynamic_cast<A&>(p);
+		(void)ra;
 		std::cout << "A\n";
 	}
 	catch (std::exception& e)
@@ -27,6 +28,8 @@ void iddentify_from_reference(Base& p)
 	try
 	{
 		B& rb = dynamic_cast<B&>(p);
+		(void)
+		rb;
 		std::cout << "B\n";
 	}
 	catch (std::exception& e)
@@ -34,11 +37,12 @@ void iddentify_from_reference(Base& p)
 	try
 	{
 		C& rc = dynamic_cast<C&>(p);
+		(void)rc;
 		std::cout << "C\n";
 	}
 	catch (std::exception& e)
 	{}
-}	
+}
 
 int main()
 {
@@ -59,5 +63,9 @@ int main()
 	iddentify_from_reference(rb);
 	iddentify_from_reference(rc);
 	iddentify_from_reference(ra);
+
+	delete pc;
+	delete pb;
+	delete pa;
 
 }
