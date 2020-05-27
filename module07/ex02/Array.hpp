@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
+#include <cstdlib>
 
 template<class T>
 class Array
@@ -60,22 +62,24 @@ class Array
 			std::cout << "Index out of range, aborting ...\n";
 			exit(1);
 		}
+			return (_array[i]);
 	}
 
 	const T& operator [](unsigned int i) const
+	{
+		try
 		{
-			try
-			{
-				if (i >= _size)
-					throw (std::exception());
-				return (_array[i]);
-			}
-			catch (std::exception& e)
-			{
-				std::cout << "Index out of range, aborting ...\n";
-				exit(1);
-			}
+			if (i >= _size)
+				throw (std::exception());
+			return (_array[i]);
 		}
+		catch (std::exception& e)
+		{
+			std::cout << "Index out of range, aborting ...\n";
+			exit(1);
+		}
+		return (_array[i]);
+	}
 
 	unsigned int size() const
 	{
