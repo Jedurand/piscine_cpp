@@ -16,30 +16,35 @@ class Array
 		}
 	};
 
-	Array(unsigned int n = 0): _array(new T[n]), _size(n)
+	Array():_size(0), _array(new T[0])
 	{
-		//_array = new T[n];
-		bzero(_array, n);
-		//_null = new T;
+
 	};
 
-	~Array() { delete[] _array;};
-
-	Array(const Array& array)
+	Array(unsigned int n): _size(n), _array(new T[n])
 	{
-		_array = new T[array._size];
-		bzero(_array, array._size);
+		bzero(_array, n * sizeof(T));
+	};
+
+	~Array()
+	{
+		delete[] _array;
+	};
+
+	Array(const Array& array): _size(array._size), _array(new T[array._size])
+	{
 		for (unsigned int i = 0; i < array._size; i++)
 			_array[i] = array._array[i];
-		_size = array._size;
 	};
+
 	void operator = (const Array& array)
 	{
-		_array = new T[array._size];
-		bzero(_array, array._size);
+		if (_size > 0)
+			delete[] (_array);
+		_size = array._size;
+		_array = new T[_size];
 		for (unsigned int i = 0; i < array._size; i++)
 			_array[i] = array._array[i];
-		_size = array._size;
 	};
 
 	T& operator [](unsigned int i)
