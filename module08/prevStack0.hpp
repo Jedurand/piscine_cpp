@@ -3,31 +3,30 @@
 
 #include <iostream>
 #include <string>
+#include <stack>
 
 template<class T>
-class MutantStack
+class MutantStack: public std::stack
 {
-	public:
+	private:
 	class El
 	{
-	public:
+		public:
 		T	_el;
 		El	*_next;
-//		El	*_prev;
 	};
 
+	public:
 	class Iterator
 	{
 		public:
 		El		*_el;
-		//El<T>		*_prev_el;
-
 
 		// overloads:
 		Iterator()
 		{
 			_el = NULL;
-		}
+		};
 
 		Iterator(const Iterator& it)
 		{
@@ -91,8 +90,6 @@ class MutantStack
 	{
 		_stack = NULL;
 		_size = 0;
-	//	_container_type = "MutantStack";
-		_size_type = "Unsigned int";
 	};
 
 	~MutantStack()
@@ -113,7 +110,6 @@ class MutantStack
 		Iterator it;
 
 		_size = stack._size;
-		_size_type = "Unsigned int";
 		bstack = stack._stack;
 		it = stack.begin();
 		while (*it)
@@ -122,7 +118,7 @@ class MutantStack
 			b->_el = *it;
 			it++;
 			// Ajouter dans le desorde;
-			
+
 		}
 
 	};
@@ -225,11 +221,6 @@ class MutantStack
 	El     *_stack;
 
 	unsigned int	_size;
-
-//	std::string _container_type;
-	std::string _size_type;
-
-
 };
 
 #endif
