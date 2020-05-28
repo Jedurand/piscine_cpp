@@ -42,7 +42,7 @@ int main(int ac, char **av)
 	bzero(bytes, MAX_BYTES * sizeof(char));
 	p = 0;
 
-	for (int i = 0; i < cmds.size(); i++)
+	for (unsigned long i = 0; i < cmds.size(); i++)
 	{
 //		std::cout << "lol\n";
 		if (cmds[i] == '[')

@@ -86,7 +86,19 @@ int main()
 	while(it3 != ite3)
 	{
 		std::cout << *it3 << std::endl;
+		*it3 = 42;
 		++it3;
 	}
+
+	it3 = ms2.begin();
+	ite3 = ms2.end();
+	++it3;
+	--it3;
+	while(it3 != ite3)
+	{
+		std::cout << *it3 << std::endl;
+		++it3;
+	}
+	std::cout << ms2.size();
 	return (0);
 }
