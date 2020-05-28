@@ -3,27 +3,21 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <cstdlib>
+#include <algorithm>
+#include <exception>
 
 template<typename T>
-int *easyfind(T& container, int value)
+int& easyfind(T& container, int value)
 {
-	try
-	{
-		if (container.empty() == true)
-			throw(std::exception());
-		for (int i = 0; i < container.size(); i++)
-		{
-			if (container[i] == value)
-				return (&container[i]);
-		}
+	typename T::iterator it;
+
+	if (container.empty() == true)
 		throw(std::exception());
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Exception: Value not find or container is empty\n";
-		return (NULL);
-	}
+	it = std::find(container.begin(), container.end(), value);
+	if (it == container.end())
+		throw(std::exception());
+	return (*it);
 }
 
 #endif

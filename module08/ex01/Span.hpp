@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Span
 {
@@ -19,10 +20,9 @@ class Span
 	int longestSpan();
 
 	private:
-	unsigned int _N;
-	std::vector<int> _v;
-	int _smallest;
-	int _biggest;
+	unsigned int 		_N;
+	std::vector<int> 	_v;
+	Span();
 };
 
 #endif

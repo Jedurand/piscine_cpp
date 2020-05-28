@@ -18,6 +18,7 @@ Span::Span(const Span& span)
 
 void Span::operator = (const Span& span)
 {
+	_v.clear();
 	_N = span._N;
 	_v = span._v;
 }
@@ -28,19 +29,8 @@ void Span::addNumber(int n)
 	{
 		if (_v.size() >= _N)
 			throw (std::exception());
-		if (_v.size() == 0)
-		{
-			_smallest = n;
-			_biggest = n;
-		}
-		else
-		{
-			if (n < _smallest)
-				_smallest = n;
-			if (n > _biggest)
-				_biggest = n;
-		}
 		_v.push_back(n);
+		std::sort(_v.begin(), _v.end());
 	}
 	catch (std::exception& e)
 	{
@@ -52,13 +42,13 @@ int Span::longestSpan()
 {
 	try
 	{
-		if (_v.size() == 0)
+		if (_v.size() == 0 || _v.size() == 1)
 			throw (std::exception());
-		return (abs(_biggest - _smallest));
+		return (abs(_v.front() - _v.back()));
 	}
 	catch (std::exception& e)
 	{
-		std::cout << "Span is empty\n";
+		std::cout << "Span is empty, or just contains just one element\n";
 		return (0);
 	}
 }
@@ -67,23 +57,23 @@ int Span::shortestSpan()
 {
 	try
 	{
-		int shortest = _biggest - _smallest;
-		if (_v.size() == 0)
+		int shortest = abs(_v.front() - _v.back());
+		if (_v.size() == 0 || _v.size() == 1)
 			throw (std::exception());
-		for (int i = 0; i < _v.size(); i++)
+		for (std::vector<int>::iterator it = _v.begin(); it != _v.end(); it++)
 		{
-			for (int j = 0; j < _v.size(); j++)
+			for (std::vector<int>::iterator jt = it+1; jt!= _v.end(); jt++)
 			{
-				if (j != i && abs(_v[i] - _v[j]) < shortest)
-					shortest = abs(_v[i] - _v[j]);
+				if (abs(*it - *jt) < shortest)
+					shortest = abs(*it - *jt);
 			}
 		}
 		return (shortest);
+
 	}
 	catch (std::exception& e)
 	{
-		std::cout << "Span is empty\n";
+		std::cout << "Span is empty, or just contains just one element\n";
 		return (0);
 	}
 }
-	
